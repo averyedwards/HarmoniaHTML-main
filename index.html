@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>(function(){var t;try{var m=document.cookie.match(/(?:^|;\s*)harmonia-theme=(dark|light)/);if(m)t=m[1];}catch(e){}if(!t){try{t=localStorage.getItem('harmonia-theme');}catch(e){}}document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');}());</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+    <title>Harmonia - The Compatibility Engine</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Override synthesis-knot-icon color so gradient fills work correctly */
+        .synthesis-knot-icon {
+            color: transparent !important;
+        }
+        [data-theme="dark"] .synthesis-knot-icon {
+            color: transparent !important;
+            filter: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo" onclick="window.location.href='index.html'">
+            <img src="assets/images/harmonia-logo.png" alt="Harmonia Logo" style="height:40px;width:40px;object-fit:contain;">
+            <span class="sr-only">Harmonia</span>
+        </div>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html" id="nav-home">Home</a></li>
+                <li><a href="why-harmonia.html" id="nav-why-harmonia">Why Harmonia</a></li>
+                <li><a href="partnerships.html" id="nav-partnerships">Ignite Your Platform</a></li>
+                <li><a href="team.html" id="nav-team">Team</a></li>
+                <li><a href="local-network.html" id="nav-local-network">Local Network</a></li>
+                <li><a href="p2p.html" id="nav-p2p">Join Our Testing Pool</a></li>
+                <li><a href="contact.html" id="nav-contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                <div class="theme-toggle-icons">
+                    <svg class="sun-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+                    </svg>
+                    <svg class="moon-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                    </svg>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div class="page active" id="page-home">
+
+        <!-- HOME PAGE -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 class="tagline">
+                        They designed <span class="addiction">addiction.</span><br>We designed <span class="compatibility">compatibility.</span>
+                    </h1>
+                    <p class="subtitle">Harmonia is the next evolution in compatibility engines for dating platforms. It combines visual attraction, psychological compatibility, and genetic chemistry to prioritize real human connection over endless swiping.</p>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="window.location.href='p2p.html'">Join the Testing Pool</button>
+                        <button class="btn btn-secondary" onclick="window.location.href='partnerships.html'">Integrate the Engine</button>
+                    </div>
+                </div>
+        
+                <div class="radar-wrapper">
+                    <div class="radar-bg-circle large"></div>
+                    <div class="radar-bg-circle medium"></div>
+                    <div class="radar-bg-circle small"></div>
+                    
+                    <div class="radar-container">
+                        <svg class="radar-svg" viewBox="0 0 400 400">
+                            <polygon class="radar-grid" points="200,40 350,120 350,280 200,360 50,280 50,120"/>
+                            <polygon class="radar-grid" points="200,80 310,140 310,260 200,320 90,260 90,140"/>
+                            <polygon class="radar-grid" points="200,120 270,160 270,240 200,280 130,240 130,160"/>
+                            <polygon id="radarA" class="radar-shape-a" points="200,50 340,125 330,275 200,345 60,270 70,130"/>
+                            <polygon id="radarB" class="radar-shape-b" points="200,70 320,140 325,265 200,330 80,260 75,135"/>
+                        </svg>
+                        
+                        <span class="radar-label top">VISUAL</span>
+                        <span class="radar-label bottom-left">GENETIC</span>
+                        <span class="radar-label bottom-right">PERSONALITY</span>
+                        
+                        <div class="radar-status" id="radar-status">SYNTHESIZING...</div>
+                    </div>
+                </div>
+            </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-inner">
+                <span class="logo-text">Harmonia Engine</span>
+                <div class="footer-links">
+                    <a href="why-harmonia.html">Why Harmonia</a>
+                    <a href="partnerships.html">Ignite Your Platform</a>
+                    <a href="team.html">Team</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <p class="copyright">© 2026 Harmonia Engine</p>
+            </div>
+        </footer>
+    
+    </div>
+
+    <script src="assets/js/shared.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>(function(){var t;try{var m=document.cookie.match(/(?:^|;\s*)harmonia-theme=(dark|light)/);if(m)t=m[1];}catch(e){}if(!t){try{t=localStorage.getItem('harmonia-theme');}catch(e){}}document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');}());</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+    <title>Harmonia - Why Harmonia</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Override synthesis-knot-icon color so gradient fills work correctly */
+        .synthesis-knot-icon {
+            color: transparent !important;
+        }
+        [data-theme="dark"] .synthesis-knot-icon {
+            color: transparent !important;
+            filter: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo" onclick="window.location.href='index.html'">
+            <img src="assets/images/harmonia-logo.png" alt="Harmonia Logo" style="height:40px;width:40px;object-fit:contain;">
+            <span class="sr-only">Harmonia</span>
+        </div>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html" id="nav-home">Home</a></li>
+                <li><a href="why-harmonia.html" id="nav-why-harmonia">Why Harmonia</a></li>
+                <li><a href="partnerships.html" id="nav-partnerships">Ignite Your Platform</a></li>
+                <li><a href="team.html" id="nav-team">Team</a></li>
+                <li><a href="local-network.html" id="nav-local-network">Local Network</a></li>
+                <li><a href="p2p.html" id="nav-p2p">Join Our Testing Pool</a></li>
+                <li><a href="contact.html" id="nav-contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                <div class="theme-toggle-icons">
+                    <svg class="sun-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+                    </svg>
+                    <svg class="moon-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                    </svg>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page active" id="page-why-harmonia">
+
+        <section id="why-harmonia">
+                <div class="container">
+                    
+                    <div class="why-header-group">
+                        <h2 class="section-title fade-in">Dating is broken. <span style="color: var(--gold);">And it's not an accident.</span></h2>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card fade-in delay-1">
+                                <div class="stat-number">78%</div>
+                                <div class="stat-label">
+                                    of users report<br>dating app burnout
+                                    <a href="https://www.forbes.com/health/dating/dating-app-fatigue/" target="_blank" class="stat-citation">Source: Forbes (2024)</a>
+                                </div>
+                            </div>
+                            <div class="stat-card fade-in delay-2">
+                                <div class="stat-number">3 hrs</div>
+                                <div class="stat-label">
+                                    daily for heavy users
+                                    <a href="https://www.forbes.com/health/dating/dating-app-fatigue/" target="_blank" class="stat-citation">Source: Forbes (2024)</a>
+                                </div>
+                            </div>
+                            <div class="stat-card fade-in delay-3">
+                                <div class="stat-number">$6B+</div>
+                                <div class="stat-label">
+                                    annual revenue<br>despite falling success
+                                    <a href="https://www.businessofapps.com/data/dating-app-market/" target="_blank" class="stat-citation">Source: Business of Apps</a>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="philosophy-block fade-in delay-2">
+                            <p class="lead-text">
+                                Attraction isn't random. It's a synthesis: the spark you feel when you see someone, the resonance when your minds align, and a chemistry rooted in your biology. Harmonia is the engine that brings all three together.
+                            </p>
+                        </div>
+                    </div>
+        
+                    <div class="science-slider-wrapper fade-in delay-3">
+                        <div class="science-slider-container" id="scienceSlider">
+                            <div class="slider-track" id="scienceTrack">
+                                
+                                <div class="science-card visual-card" data-index="0">
+                                    <!-- Animated Eye Container -->
+                                    <div class="eye-container">
+                                        <svg viewBox="0 0 100 100" class="visual-eye-icon">
+                                            <!-- Outer circle - always visible -->
+                                            <circle class="eye-outer" cx="50" cy="50" r="45" stroke="var(--gold)" stroke-width="1" fill="none"/>
+                                            <!-- Upper eyelid - closed position (curves down to form top of closed eye) -->
+                                            <path class="upper-lid" d="M30 50 Q50 35 70 50" stroke="var(--gold)" stroke-width="1.5" fill="none"/>
+                                            <!-- Pupil/vertical line - hidden initially -->
+                                            <path class="eye-pupil" d="M50 40 L50 60" stroke="var(--maroon)" stroke-width="1.5" fill="none"/>
+                                            <!-- Lower eyelid - closed position (curves up to form bottom of closed eye) -->
+                                            <path class="lower-lid" d="M35 50 Q50 65 65 50" stroke="var(--gold)" stroke-width="1.5" fill="none"/>
+                                            <!-- Diamond shape - hidden initially -->
+                                            <rect class="eye-diamond" x="25" y="25" width="50" height="50" stroke="var(--gold)" stroke-width="0.5" fill="none" style="transform: rotate(45deg); transform-origin: center;"/>
+                                        </svg>
+                                    </div>
+
+                                    <div class="card-header">
+                                        <div class="card-visual">
+                                            <!-- Placeholder to maintain layout spacing -->
+                                        </div>
+                                        <div class="card-title-group">
+                                            <h3 class="card-title">Visual</h3>
+                                            <p class="card-subtitle">Physical attraction drives the strongest initial spark in romantic connection.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="comparison-column">
+                                            <span class="comp-label">Science</span>
+                                            <span class="comp-text">Physical attraction drives the strongest initial spark.</span>
+                                        </div>
+                                        <div class="comparison-column dim">
+                                            <span class="comp-label">Apps</span>
+                                            <span class="comp-text">Reduced it to quick swipes.</span>
+                                        </div>
+                                        <div class="comparison-column highlight">
+                                            <span class="comp-label">Harmonia</span>
+                                            <span class="comp-text">Prioritizes it as the foundation.</span>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="science-card personality-card" data-index="1">
+                                    <!-- Animated Personality Icon Container -->
+                                    <div class="personality-icon-container">
+                                        <svg viewBox="0 0 100 100" class="personality-animated-icon">
+                                            <defs>
+                                                <mask id="arc-mask">
+                                                    <path class="mask-path" d="M 78 27 A 36 36 0 0 1 50 85" stroke="white" stroke-width="4" fill="none" />
+                                                    <path class="mask-path" d="M 50 85 A 36 36 0 0 1 22 27" stroke="white" stroke-width="4" fill="none" />
+                                                    <path class="mask-path" d="M 22 27 A 36 36 0 0 1 78 27" stroke="white" stroke-width="4" fill="none" />
+                                                </mask>
+                                            </defs>
+                                            
+                                            <!-- Three maroon dots -->
+                                            <circle class="dot dot-1" cx="22" cy="27" r="5" fill="var(--maroon)"/>
+                                            <circle class="dot dot-2" cx="78" cy="27" r="5" fill="var(--maroon)"/>
+                                            <circle class="dot dot-3" cx="50" cy="85" r="5" fill="var(--maroon)"/>
+                                            
+                                            <!-- Inner lines (dots to center) -->
+                                            <line class="inner-line line-1" x1="22" y1="27" x2="50" y2="50" stroke="var(--gold)" stroke-width="1.5"/>
+                                            <line class="inner-line line-2" x1="78" y1="27" x2="50" y2="50" stroke="var(--gold)" stroke-width="1.5"/>
+                                            <line class="inner-line line-3" x1="50" y1="85" x2="50" y2="50" stroke="var(--gold)" stroke-width="1.5"/>
+                                            
+                                            <!-- Golden center circle -->
+                                            <circle class="center-circle" cx="50" cy="50" r="6" fill="var(--gold)"/>
+
+                                            <!-- Outer arcs (dot to dot) revealed by mask -->
+                                            <g mask="url(#arc-mask)">
+                                                <path d="M 78 27 A 36 36 0 0 1 50 85" stroke="var(--gold)" stroke-width="1.5" fill="none" stroke-dasharray="4 3" />
+                                                <path d="M 50 85 A 36 36 0 0 1 22 27" stroke="var(--gold)" stroke-width="1.5" fill="none" stroke-dasharray="4 3" />
+                                                <path d="M 22 27 A 36 36 0 0 1 78 27" stroke="var(--gold)" stroke-width="1.5" fill="none" stroke-dasharray="4 3" />
+                                            </g>
+                                        </svg>
+                                    </div>
+
+                                    <div class="card-header">
+                                        <div class="card-visual personality-icon">
+                                            <svg viewBox="0 0 100 100" class="abstract-icon">
+                                                <!-- Final static icon (shown after animation completes) -->
+                                                <circle cx="50" cy="50" r="36" stroke="var(--gold)" stroke-width="1" fill="none" stroke-dasharray="4 3"/>
+                                                <circle cx="22" cy="27" r="5" fill="var(--maroon)"/>
+                                                <circle cx="78" cy="27" r="5" fill="var(--maroon)"/>
+                                                <circle cx="50" cy="85" r="5" fill="var(--maroon)"/>
+                                                <line x1="22" y1="27" x2="50" y2="50" stroke="var(--gold)" stroke-width="1.5"/>
+                                                <line x1="78" y1="27" x2="50" y2="50" stroke="var(--gold)" stroke-width="1.5"/>
+                                                <line x1="50" y1="85" x2="50" y2="50" stroke="var(--gold)" stroke-width="1.5"/>
+                                                <circle cx="50" cy="50" r="6" fill="var(--gold)"/>
+                                            </svg>
+                                        </div>
+                                        <div class="card-title-group">
+                                            <h3 class="card-title">Personality</h3>
+                                            <p class="card-subtitle">Perceived similarity builds deeper, lasting emotional connection.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="comparison-column personality-box science-box">
+                                            <span class="comp-label">Science</span>
+                                            <span class="comp-text">Perceived similarity builds deeper connection.</span>
+                                        </div>
+                                        <div class="comparison-column personality-box apps-box dim">
+                                            <span class="comp-label">Apps</span>
+                                            <span class="comp-text">Largely ignored it.</span>
+                                        </div>
+                                        <div class="comparison-column personality-box harmonia-box highlight">
+                                            <span class="comp-label">Harmonia</span>
+                                            <span class="comp-text">Integrates psychological compatibility into matching.</span>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="science-card genetic-card" data-index="2">
+                                    <!-- Animated DNA Icon Container -->
+                                    <div class="dna-icon-container">
+                                        <svg viewBox="0 0 100 100" class="dna-animated-icon">
+                                            <!-- Helix curves (start hidden) -->
+                                            <path class="helix-gold" d="M35 10 Q65 25 35 40 Q65 55 35 70 Q65 85 35 100" stroke="var(--gold)" stroke-width="2" fill="none"/>
+                                            <path class="helix-maroon" d="M65 10 Q35 25 65 40 Q35 55 65 70 Q35 85 65 100" stroke="var(--maroon)" stroke-width="2" fill="none" opacity="0.6"/>
+                                            <!-- Rungs -->
+                                            <line class="dna-rung rung-1" x1="35" y1="25" x2="65" y2="25" stroke="var(--gold)" stroke-width="1.5"/>
+                                            <line class="dna-rung rung-2" x1="35" y1="55" x2="65" y2="55" stroke="var(--gold)" stroke-width="1.5"/>
+                                            <line class="dna-rung rung-3" x1="35" y1="85" x2="65" y2="85" stroke="var(--gold)" stroke-width="1.5"/>
+                                        </svg>
+                                        <!-- Electric crackle overlay -->
+                                        <svg class="crackle-overlay" viewBox="0 0 100 100">
+                                            <path class="crackle-bolt bolt-1" d="M35 25 L42 22 L48 28 L55 24 L62 26 L65 25" stroke="#ffeb3b" stroke-width="1.5" fill="none"/>
+                                            <path class="crackle-bolt bolt-2" d="M35 55 L43 52 L50 58 L57 54 L65 55" stroke="#ffeb3b" stroke-width="1.5" fill="none"/>
+                                            <path class="crackle-bolt bolt-3" d="M35 85 L41 82 L47 88 L54 84 L60 86 L65 85" stroke="#ffeb3b" stroke-width="1.5" fill="none"/>
+                                        </svg>
+                                        <!-- Amber particles -->
+                                        <div class="amber-particles">
+                                            <div class="amber-particle p1"></div>
+                                            <div class="amber-particle p2"></div>
+                                            <div class="amber-particle p3"></div>
+                                            <div class="amber-particle p4"></div>
+                                            <div class="amber-particle p5"></div>
+                                        </div>
+                                        <!-- Energy wave -->
+                                        <div class="energy-wave"></div>
+                                    </div>
+
+                                    <div class="card-header">
+                                        <div class="card-visual genetic-icon">
+                                            <svg viewBox="0 0 100 100" class="abstract-icon">
+                                                <path d="M35 10 Q65 25 35 40 Q65 55 35 70 Q65 85 35 100" stroke="var(--gold)" stroke-width="2" fill="none"/>
+                                                <path d="M65 10 Q35 25 65 40 Q35 55 65 70 Q35 85 65 100" stroke="var(--maroon)" stroke-width="2" fill="none" opacity="0.6"/>
+                                                <line x1="35" y1="25" x2="65" y2="25" stroke="var(--gold)" stroke-width="1" opacity="0.3"/>
+                                                <line x1="35" y1="55" x2="65" y2="55" stroke="var(--gold)" stroke-width="1" opacity="0.3"/>
+                                                <line x1="35" y1="85" x2="65" y2="85" stroke="var(--gold)" stroke-width="1" opacity="0.3"/>
+                                            </svg>
+                                        </div>
+                                        <div class="card-title-group">
+                                            <h3 class="card-title">Genetic</h3>
+                                            <p class="card-subtitle">Genetic complementarity influences biological attraction signals.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="comparison-column genetic-box science-box">
+                                            <span class="comp-label">Science</span>
+                                            <span class="comp-text">Genetic complementarity influences biological attraction.</span>
+                                        </div>
+                                        <div class="comparison-column genetic-box apps-box dim">
+                                            <span class="comp-label">Apps</span>
+                                            <span class="comp-text">Never incorporated it.</span>
+                                        </div>
+                                        <div class="comparison-column genetic-box harmonia-box highlight">
+                                            <span class="comp-label">Harmonia</span>
+                                            <span class="comp-text">Reveals hidden genetic chemistry signals.</span>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="science-card synthesis-card" data-index="3">
+                                    <!-- Animation Container -->
+                                    <div class="synthesis-animation-container">
+                                        <!-- Three icons in triangle -->
+                                        <div class="synthesis-icon icon-visual">
+                                            <svg viewBox="0 0 100 100">
+                                                <ellipse cx="50" cy="50" rx="35" ry="20" fill="none" stroke="var(--gold)" stroke-width="2"/>
+                                                <circle cx="50" cy="50" r="12" fill="none" stroke="var(--gold)" stroke-width="2"/>
+                                                <circle cx="50" cy="50" r="5" fill="var(--gold)"/>
+                                            </svg>
+                                        </div>
+                                        <div class="synthesis-icon icon-personality">
+                                            <svg viewBox="0 0 100 100">
+                                                <circle cx="50" cy="20" r="8" fill="none" stroke="var(--gold)" stroke-width="2"/>
+                                                <circle cx="25" cy="70" r="8" fill="none" stroke="var(--gold)" stroke-width="2"/>
+                                                <circle cx="75" cy="70" r="8" fill="none" stroke="var(--gold)" stroke-width="2"/>
+                                                <line x1="50" y1="28" x2="25" y2="62" stroke="var(--gold)" stroke-width="1.5"/>
+                                                <line x1="50" y1="28" x2="75" y2="62" stroke="var(--gold)" stroke-width="1.5"/>
+                                                <line x1="33" y1="70" x2="67" y2="70" stroke="var(--gold)" stroke-width="1.5"/>
+                                            </svg>
+                                        </div>
+                                        <div class="synthesis-icon icon-genetics">
+                                            <svg viewBox="0 0 100 100">
+                                                <path d="M35 10 Q65 25 35 40 Q65 55 35 70 Q65 85 35 100" stroke="var(--gold)" stroke-width="2" fill="none"/>
+                                                <path d="M65 10 Q35 25 65 40 Q35 55 65 70 Q35 85 65 100" stroke="var(--maroon)" stroke-width="2" fill="none" opacity="0.6"/>
+                                                <line x1="35" y1="25" x2="65" y2="25" stroke="var(--gold)" stroke-width="1.5" opacity="0.5"/>
+                                                <line x1="35" y1="55" x2="65" y2="55" stroke="var(--gold)" stroke-width="1.5" opacity="0.5"/>
+                                                <line x1="35" y1="85" x2="65" y2="85" stroke="var(--gold)" stroke-width="1.5" opacity="0.5"/>
+                                            </svg>
+                                        </div>
+                                        
+                                        <!-- Impact flash -->
+                                        <div class="impact-flash"></div>
+                                        
+                                        <!-- Sparks (9 total, color-coded) -->
+                                        <div class="sparks-container">
+                                            <div class="spark spark-gold s1"></div>
+                                            <div class="spark spark-white s2"></div>
+                                            <div class="spark spark-gold s3"></div>
+                                            <div class="spark spark-maroon s4"></div>
+                                            <div class="spark spark-gold s5"></div>
+                                            <div class="spark spark-maroon s6"></div>
+                                            <div class="spark spark-white s7"></div>
+                                            <div class="spark spark-gold s8"></div>
+                                            <div class="spark spark-maroon s9"></div>
+                                        </div>
+                                        
+                                        <!-- Fog/Glow -->
+                                        <div class="synthesis-fog"></div>
+                                        
+                                        <!-- Synthesis Venn Symbol (center, animated, becomes clickable pause button) -->
+                                        <div class="harmonia-logo-center" >
+                                            <svg viewBox="0 0 666 665" class="abstract-icon synthesis-knot-icon" xmlns="http://www.w3.org/2000/svg">
+                                                <path class="knot-path" d="M175.967 0.0275561C177.315 -0.0570301 179.95 0.0560559 183.353 0.326384C186.946 0.611744 191.498 1.07999 196.537 1.71994C206.249 2.95356 215.836 4.5678 220.58 5.84494C244.678 12.3333 275 28.7171 305.043 52.0412L306.483 53.1653L306.505 53.1828L306.529 53.2004C311.12 56.8367 328.257 69.4574 332.499 71.5787C336.388 69.1038 345.968 63.15 349.51 60.174L349.511 60.1731C354.17 56.2582 366.532 47.2941 378.347 39.0901C384.178 35.0414 389.711 31.2917 393.881 28.5764C417.254 13.3588 444.254 3.65256 472.085 1.20431H472.1L472.121 1.20236L474.508 1.00998H474.515C524.951 -2.70248 574.93 16.0088 612.415 53.0041L613.562 54.1477C655.175 95.9773 675.353 162.239 660.121 220.08C653.938 243.345 643.092 264.249 617.108 300.79L617.056 300.863L617.055 300.864L614.545 304.376C611.814 308.181 607.586 313.729 605.246 316.594L605.235 316.607L605.225 316.62L605.134 316.734L605.075 316.803L605.042 316.847C603.871 318.28 602.532 319.908 601.414 321.51L600.94 322.207C598.261 326.279 597.351 328.558 594.523 333.507C596.997 337.396 599.397 340.284 601.369 343.485C602.887 345.95 604.999 348.821 607.487 352.109L607.492 352.114L609.966 355.367L609.967 355.369L610.137 355.592L610.351 355.873L610.352 355.874L612.404 358.579L612.416 358.596C633.489 386.516 646.905 408.504 654.923 429.131C663.108 450.187 665.853 470.311 664.776 494.558C662.821 538.55 645.32 579.041 615.324 609.372C608.161 616.615 604.282 620.454 600.599 623.6L599.864 624.221C595.989 627.457 591.962 630.238 583.889 635.638C552.018 656.955 510.719 667.602 472.534 664.418L470.718 664.256C421.521 659.574 381.948 633.405 344.491 604.166C340.991 601.434 337.489 597.612 333.6 594.43C331.648 595.862 320.519 603.269 318.914 604.166C313.587 607.145 301.598 616.468 288.062 625.568C274.629 634.598 261.041 643.073 253.992 646.62C224.431 661.494 197.872 666.886 166.955 664.426H166.948L166.886 664.421L165.417 664.298L165.4 664.296L165.386 664.295C132.96 661.453 105.144 651.749 79.4702 634.45C72.1703 629.532 68.5044 626.971 64.8999 623.942C61.2408 620.866 57.5062 617.191 50.2505 609.871C20.5139 579.872 2.84969 539.866 0.395041 496.782V496.727L0.387229 496.644L0.286643 494.655L0.283713 494.595L0.282736 494.59C-1.17064 462.258 5.44634 433.962 21.0454 405.737C23.2045 401.829 29.7178 391.387 35.5 382.5C44.0101 369.421 53.2612 358.383 62.189 345.595C64.3661 342.476 71.5425 332.891 71.577 332.501C71.626 331.946 62.548 319.872 60.564 317.374C49.4254 303.349 37.6352 286.325 28.0679 270.898C18.5763 255.593 11.9524 242.934 9.82668 236.426L9.82473 236.418L9.82278 236.412L9.82082 236.405L9.63332 235.806L9.63137 235.798C0.918378 206.726 -0.721031 195.099 0.245627 172.544L0.254416 172.476V172.361L0.327658 170.819L0.330588 170.747V170.741C2.04897 136.962 11.3252 108.884 30.2583 80.1447L30.2798 80.1125L30.2788 80.1115L30.98 79.0676L30.981 79.0686L30.9898 79.0559L31.0044 79.0334L31.0073 79.0276L31.0083 79.0285C38.8746 67.5114 55.5389 49.0428 65.2437 41.1281L65.312 41.0735L66.5581 40.0705L66.562 40.0676C93.018 18.9941 128.499 4.56433 161.83 1.35275C168.485 0.711384 174.747 0.122531 175.826 0.0363452L175.862 0.0334155H175.873L175.967 0.0275561ZM81.4764 342.401C70.9999 353.01 64.2065 363.746 55.5 375.5C46.4656 387.697 37.1037 402.39 31.7739 413.5C8.11525 462.816 6.34646 513.932 30.8999 562.747L30.9038 562.757L30.9087 562.766L31.7642 564.438L31.7739 564.457C50.3657 600.169 86.2232 630.909 124.191 643.489C143.477 649.88 158.042 652.177 178.894 652.155C202.884 652.131 223.256 648.609 243.756 639.432C264.053 630.346 283.883 615.977 307.174 595.19C324.276 579.927 368.002 537.587 407.265 498.862C426.94 479.456 446.585 461.855 460.323 447.908C470.876 437.194 481.739 426.492 492.699 415.532C479.618 402.45 466.431 389.264 455.223 378.055C443.909 366.741 429.06 351.892 419.16 341.993C411.735 349.417 396.44 364.713 388.755 372.398C372.775 388.378 356.686 404.247 340.641 420.161L340.64 420.162C282.979 477.411 252.011 507.931 232.919 525.145C216.405 540.034 209.48 544.323 202.282 547.345L200.835 547.935L200.798 547.949L200.773 547.959L199.332 548.522L199.285 548.539C195.241 550.087 188.266 551.207 180.416 551.348C173.085 551.48 166.32 550.734 161.884 549.456L161.873 549.453L161.853 549.447L161.024 549.192L161.008 549.186L161.004 549.185L159.629 548.72C130.934 538.729 113.552 514.749 113.551 486.502C113.551 477.578 114.866 469.676 118.256 461.537C121.641 453.413 127.077 445.097 135.254 435.318L135.255 435.316L135.334 435.221L136.439 433.89C142.093 427.026 148.025 421.516 154.308 415.233C154.387 415.154 145.823 406.747 145.47 406.394C144.954 405.878 144.107 405.031 143.348 404.272C141.934 402.858 139.813 400.737 137.338 398.262C132.246 393.17 125.351 386.275 117.892 378.817C105.872 366.796 81.4764 342.401 81.4764 342.401ZM414.917 173.701C414.917 173.701 400.422 188.197 397.247 191.386C391.87 196.788 384.755 203.947 377.801 210.831C366.481 222.04 353.406 235.227 342.085 246.533C370.012 274.46 397.967 302.36 425.818 330.362C464.974 369.729 492.152 397.4 510.502 416.677C529.112 436.225 538.037 446.528 541.344 451.493C547.713 461.054 550.399 469.179 551.195 482.466C551.831 493.076 550.604 501.81 547.554 509.682C544.539 517.462 539.521 524.966 531.772 532.886C523.897 540.454 514.506 545.77 504.113 549.166C500.843 550.235 493.989 551.112 486.268 551.257C482.312 551.331 478.773 551.2 475.93 550.955C473.115 550.713 470.91 550.354 469.661 549.944C459.324 546.545 446.051 538.922 435.333 529.927L435.325 529.92L435.301 529.901L434.026 528.843L434.014 528.833C427.688 523.691 422.09 517.457 416.332 511.698C407.139 520.891 388.185 539.845 379.209 548.821C366.751 561.279 355.167 572.863 342.793 585.237C360.844 603.289 382.264 619.24 404.725 631.357C434.624 647.485 458.118 652.922 492.626 651.763C519.828 650.85 536.896 646.784 559.502 635.605C594.14 618.475 620.149 592.359 636.142 558.404L636.145 558.398L636.149 558.391L637.033 556.489L637.036 556.482L637.04 556.475C655.652 515.851 657.981 474.855 643.937 432.998C637.057 412.491 628.827 396.991 602.914 367.093C577.354 337.603 533.973 293.139 456.283 215.067C446.234 204.969 414.564 173.348 414.917 173.701ZM163.895 424.724C158.09 431.031 152.124 437.175 146.352 443.501C141.9 448.38 136.811 454.668 133.878 459.621L133.854 459.647L133.653 460L132.943 461.253L132.936 461.267L132.928 461.28C131.245 464.321 129.905 467.283 128.987 470.854C128.116 474.24 127.721 477.818 127.462 481.97L127.461 481.978V481.986L127.359 483.786L127.358 483.8C127.093 488.843 126.952 493.046 127.584 496.943C128.278 501.222 129.793 504.541 131.549 508.002C134.462 513.741 137.457 518.561 141.411 522.679C145.178 526.602 149.394 529.45 154.295 532.008L154.303 532.013L154.312 532.017L155.264 532.506L155.281 532.515L155.297 532.523L155.887 532.817L155.895 532.821L155.904 532.825C168.913 539.208 183.688 540.49 196.667 535.422L196.667 535.423L196.786 535.377L196.793 535.374L196.8 535.371C199.857 534.166 203.317 532.013 206.35 529.928C217.898 521.99 232.379 510.388 240.969 501.799C227.888 488.717 206.321 467.15 202.078 462.908C196.421 457.251 163.895 424.724 163.895 424.724ZM502.599 425.431C491.713 436.316 480.906 447.284 469.941 458.089C455.027 472.786 440.33 487.7 425.524 502.506C443.1 520.082 460.42 537.807 486.603 537.904C491.75 537.923 496.201 537.914 500.421 536.834C504.849 535.702 508.434 533.552 512.271 531.209L512.944 530.792C519.845 526.463 525.068 521.373 529.745 514.506C532.339 510.697 534.766 507.124 536.112 502.599C537.383 498.327 537.532 493.692 537.707 488.275C537.952 480.62 537.768 473.998 535.014 467.218L534.651 466.357L534.29 465.557C527.073 450.116 505.074 427.906 502.599 425.431ZM184.031 13.8488C170.788 13.4606 156.588 13.8875 147.778 15.6164C136.43 17.8438 117.357 23.7821 108.721 27.9153L108.694 27.9289L107.918 28.3098L107.903 28.3166L107.887 28.3244C84.09 40.3568 60.3723 59.5907 45.4077 79.2385C40.4053 85.8067 34.6836 95.8362 29.7974 105.763C25.2163 115.07 20.9841 125.068 18.6196 132.98L18.6148 132.995L18.6109 133.01L17.6861 136.225L17.7105 136.249C7.65774 174.315 11.8732 217.335 29.2124 252.112C37.0744 267.88 46.9465 282.052 72.2027 309.838C97.3616 337.518 137.98 379.921 208.442 450.887C217.732 460.244 240.616 483.06 250.162 492.606C254.051 488.717 281.279 461.418 287.285 455.483C299.495 443.417 318.397 424.371 323.701 419.067C315.923 411.289 301.219 396.585 294.002 389.369C281.748 377.115 264.845 360.304 246.626 341.993C179.693 274.721 146.596 241.826 129.998 221.535C121.793 211.506 118.245 205.386 116.456 200.472C114.681 195.597 114.343 191.21 113.898 183.281C113.321 173 114.441 164.104 117.636 155.832C120.831 147.563 126.077 139.977 133.671 132.282C156.49 109.162 190.453 110.252 216.632 125.52C216.739 125.638 216.879 125.708 217.03 125.755C217.995 126.35 218.49 126.694 218.851 126.977C219.033 127.119 219.182 127.247 219.304 127.35C219.43 127.456 219.563 127.567 219.748 127.706C220.311 128.132 220.826 128.477 221.385 128.848C221.941 129.217 222.535 129.611 223.218 130.117C223.574 130.381 224.111 130.764 224.715 131.227C226.751 132.785 229.472 135.013 232.343 137.514L250.162 154.609L269.253 135.517L272.082 132.689C278.989 125.919 289.594 114.888 297.891 106.88L322.994 81.7773L306.595 66.7668C275.617 41.1281 229.465 15.1809 184.031 13.8488ZM294.324 294.342C283.109 305.685 266.425 322.194 255.818 332.8C267.792 344.868 282.288 359.364 294.356 371.21C305.469 382.119 322.286 399.268 332.893 409.875C335.014 407.754 358.422 384.491 371.077 371.691C382.312 360.328 399.715 343.053 409.968 332.8C397.24 320.072 382.739 305.543 370.883 293.716C358.205 281.067 339.257 262.09 332.893 255.726C321.249 267.416 305.789 282.746 294.324 294.342ZM516.96 15.5842C508.378 13.9442 496.183 13.3222 484.502 13.469C473.546 13.6067 462.117 14.4315 453.6 16.0578L453.584 16.0617L453.568 16.0647L451.974 16.3869L451.953 16.3908L450.326 16.7453L450.313 16.7483C424.914 22.3953 369.602 59.886 351.985 74.7062C329.711 93.4446 288.623 135.947 251.929 172.641C225.883 198.687 199.839 224.731 173.794 250.776C185.946 263.141 198.305 275.3 210.523 287.6C222.387 299.542 234.723 311.705 246.626 323.608C256.221 313.861 265.897 304.253 275.617 294.616C288.112 282.23 305.01 265.067 323.701 246.533C382.715 188.012 414.355 156.42 433.71 139.069C443.242 130.524 449.529 125.567 454.408 122.436C459.315 119.286 462.783 117.993 466.637 116.747L466.636 116.746L467.054 116.615L467.055 116.616C471.55 115.243 478.428 114.357 485.766 114.292C493.39 114.225 500.151 115.057 504.095 116.345L505.263 116.736C528.916 124.864 545.012 142.459 550.39 165.42L550.533 166.089C551.228 169.634 551.613 176.161 551.224 183.298C550.766 191.708 549.202 199.049 545.525 206.897C537.826 223.328 522.921 238.232 511.084 250.069C516.034 255.018 523.868 262.633 529.171 268.218C534.403 273.727 541.237 280.703 548.069 287.541C560.167 299.651 574.724 313.708 584.623 323.608C584.977 323.961 626.095 268.212 629.947 262.021C669.985 197.654 658.012 118.286 607.238 65.0764C582.63 39.2893 551.474 22.1793 516.96 15.5842ZM488.896 127.297C484.694 127.064 481.003 126.968 477.441 127.478L476.73 127.588C473.214 128.176 470.279 129.305 467.326 130.694L467.313 130.699L467.301 130.705L466.047 131.309L466.036 131.314L466.024 131.32C452.648 137.897 436.064 153.016 424.822 163.811C424.759 163.871 436.788 175.773 438.959 177.944C443.555 182.54 451.151 190.147 463.34 202.329C474.567 213.55 491.285 230.27 501.892 240.876C513.094 229.674 526.528 215.854 533.403 201.393L533.412 201.375L533.419 201.358L533.936 200.234L533.945 200.215L533.953 200.197C544.535 176.334 535.077 148.262 512.527 134.473L512.519 134.468L512.511 134.464L511.147 133.641L511.137 133.634L511.126 133.628L509.936 132.935C507.169 131.356 504.459 130.051 501.386 129.125C497.921 128.081 494.455 127.661 490.588 127.401L490.58 127.4H490.571L488.914 127.298L488.905 127.297H488.896ZM196.358 129.915C172.514 120.76 142.953 133.43 131.74 156.474C125.851 168.58 125.112 186.596 130.496 198.997L130.504 199.017C135.028 209.761 143.19 221.131 151.834 228.91C153.467 230.38 163.786 240.985 163.895 240.876C165.309 239.462 173.087 231.684 176.269 228.502C177.98 226.791 180.158 224.613 182.633 222.138C195.36 209.411 208.088 196.683 220.817 183.954C227.534 177.237 234.252 170.519 240.969 163.802L238.494 161.327C237.787 160.62 236.373 159.205 235.312 158.145C224.662 147.495 210.69 135.42 196.358 129.915Z"/>
+                                            </svg>
+                                        </div>
+                                        
+
+                                    </div>
+
+                                    <div class="card-header">
+                                        <div class="card-visual synthesis-icon-final" >
+                                            <svg viewBox="0 0 666 665" class="abstract-icon synthesis-knot-icon" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M175.967 0.0275561C177.315 -0.0570301 179.95 0.0560559 183.353 0.326384C186.946 0.611744 191.498 1.07999 196.537 1.71994C206.249 2.95356 215.836 4.5678 220.58 5.84494C244.678 12.3333 275 28.7171 305.043 52.0412L306.483 53.1653L306.505 53.1828L306.529 53.2004C311.12 56.8367 328.257 69.4574 332.499 71.5787C336.388 69.1038 345.968 63.15 349.51 60.174L349.511 60.1731C354.17 56.2582 366.532 47.2941 378.347 39.0901C384.178 35.0414 389.711 31.2917 393.881 28.5764C417.254 13.3588 444.254 3.65256 472.085 1.20431H472.1L472.121 1.20236L474.508 1.00998H474.515C524.951 -2.70248 574.93 16.0088 612.415 53.0041L613.562 54.1477C655.175 95.9773 675.353 162.239 660.121 220.08C653.938 243.345 643.092 264.249 617.108 300.79L617.056 300.863L617.055 300.864L614.545 304.376C611.814 308.181 607.586 313.729 605.246 316.594L605.235 316.607L605.225 316.62L605.134 316.734L605.075 316.803L605.042 316.847C603.871 318.28 602.532 319.908 601.414 321.51L600.94 322.207C598.261 326.279 597.351 328.558 594.523 333.507C596.997 337.396 599.397 340.284 601.369 343.485C602.887 345.95 604.999 348.821 607.487 352.109L607.492 352.114L609.966 355.367L609.967 355.369L610.137 355.592L610.351 355.873L610.352 355.874L612.404 358.579L612.416 358.596C633.489 386.516 646.905 408.504 654.923 429.131C663.108 450.187 665.853 470.311 664.776 494.558C662.821 538.55 645.32 579.041 615.324 609.372C608.161 616.615 604.282 620.454 600.599 623.6L599.864 624.221C595.989 627.457 591.962 630.238 583.889 635.638C552.018 656.955 510.719 667.602 472.534 664.418L470.718 664.256C421.521 659.574 381.948 633.405 344.491 604.166C340.991 601.434 337.489 597.612 333.6 594.43C331.648 595.862 320.519 603.269 318.914 604.166C313.587 607.145 301.598 616.468 288.062 625.568C274.629 634.598 261.041 643.073 253.992 646.62C224.431 661.494 197.872 666.886 166.955 664.426H166.948L166.886 664.421L165.417 664.298L165.4 664.296L165.386 664.295C132.96 661.453 105.144 651.749 79.4702 634.45C72.1703 629.532 68.5044 626.971 64.8999 623.942C61.2408 620.866 57.5062 617.191 50.2505 609.871C20.5139 579.872 2.84969 539.866 0.395041 496.782V496.727L0.387229 496.644L0.286643 494.655L0.283713 494.595L0.282736 494.59C-1.17064 462.258 5.44634 433.962 21.0454 405.737C23.2045 401.829 29.7178 391.387 35.5 382.5C44.0101 369.421 53.2612 358.383 62.189 345.595C64.3661 342.476 71.5425 332.891 71.577 332.501C71.626 331.946 62.548 319.872 60.564 317.374C49.4254 303.349 37.6352 286.325 28.0679 270.898C18.5763 255.593 11.9524 242.934 9.82668 236.426L9.82473 236.418L9.82278 236.412L9.82082 236.405L9.63332 235.806L9.63137 235.798C0.918378 206.726 -0.721031 195.099 0.245627 172.544L0.254416 172.476V172.361L0.327658 170.819L0.330588 170.747V170.741C2.04897 136.962 11.3252 108.884 30.2583 80.1447L30.2798 80.1125L30.2788 80.1115L30.98 79.0676L30.981 79.0686L30.9898 79.0559L31.0044 79.0334L31.0073 79.0276L31.0083 79.0285C38.8746 67.5114 55.5389 49.0428 65.2437 41.1281L65.312 41.0735L66.5581 40.0705L66.562 40.0676C93.018 18.9941 128.499 4.56433 161.83 1.35275C168.485 0.711384 174.747 0.122531 175.826 0.0363452L175.862 0.0334155H175.873L175.967 0.0275561ZM81.4764 342.401C70.9999 353.01 64.2065 363.746 55.5 375.5C46.4656 387.697 37.1037 402.39 31.7739 413.5C8.11525 462.816 6.34646 513.932 30.8999 562.747L30.9038 562.757L30.9087 562.766L31.7642 564.438L31.7739 564.457C50.3657 600.169 86.2232 630.909 124.191 643.489C143.477 649.88 158.042 652.177 178.894 652.155C202.884 652.131 223.256 648.609 243.756 639.432C264.053 630.346 283.883 615.977 307.174 595.19C324.276 579.927 368.002 537.587 407.265 498.862C426.94 479.456 446.585 461.855 460.323 447.908C470.876 437.194 481.739 426.492 492.699 415.532C479.618 402.45 466.431 389.264 455.223 378.055C443.909 366.741 429.06 351.892 419.16 341.993C411.735 349.417 396.44 364.713 388.755 372.398C372.775 388.378 356.686 404.247 340.641 420.161L340.64 420.162C282.979 477.411 252.011 507.931 232.919 525.145C216.405 540.034 209.48 544.323 202.282 547.345L200.835 547.935L200.798 547.949L200.773 547.959L199.332 548.522L199.285 548.539C195.241 550.087 188.266 551.207 180.416 551.348C173.085 551.48 166.32 550.734 161.884 549.456L161.873 549.453L161.853 549.447L161.024 549.192L161.008 549.186L161.004 549.185L159.629 548.72C130.934 538.729 113.552 514.749 113.551 486.502C113.551 477.578 114.866 469.676 118.256 461.537C121.641 453.413 127.077 445.097 135.254 435.318L135.255 435.316L135.334 435.221L136.439 433.89C142.093 427.026 148.025 421.516 154.308 415.233C154.387 415.154 145.823 406.747 145.47 406.394C144.954 405.878 144.107 405.031 143.348 404.272C141.934 402.858 139.813 400.737 137.338 398.262C132.246 393.17 125.351 386.275 117.892 378.817C105.872 366.796 81.4764 342.401 81.4764 342.401ZM414.917 173.701C414.917 173.701 400.422 188.197 397.247 191.386C391.87 196.788 384.755 203.947 377.801 210.831C366.481 222.04 353.406 235.227 342.085 246.533C370.012 274.46 397.967 302.36 425.818 330.362C464.974 369.729 492.152 397.4 510.502 416.677C529.112 436.225 538.037 446.528 541.344 451.493C547.713 461.054 550.399 469.179 551.195 482.466C551.831 493.076 550.604 501.81 547.554 509.682C544.539 517.462 539.521 524.966 531.772 532.886C523.897 540.454 514.506 545.77 504.113 549.166C500.843 550.235 493.989 551.112 486.268 551.257C482.312 551.331 478.773 551.2 475.93 550.955C473.115 550.713 470.91 550.354 469.661 549.944C459.324 546.545 446.051 538.922 435.333 529.927L435.325 529.92L435.301 529.901L434.026 528.843L434.014 528.833C427.688 523.691 422.09 517.457 416.332 511.698C407.139 520.891 388.185 539.845 379.209 548.821C366.751 561.279 355.167 572.863 342.793 585.237C360.844 603.289 382.264 619.24 404.725 631.357C434.624 647.485 458.118 652.922 492.626 651.763C519.828 650.85 536.896 646.784 559.502 635.605C594.14 618.475 620.149 592.359 636.142 558.404L636.145 558.398L636.149 558.391L637.033 556.489L637.036 556.482L637.04 556.475C655.652 515.851 657.981 474.855 643.937 432.998C637.057 412.491 628.827 396.991 602.914 367.093C577.354 337.603 533.973 293.139 456.283 215.067C446.234 204.969 414.564 173.348 414.917 173.701ZM163.895 424.724C158.09 431.031 152.124 437.175 146.352 443.501C141.9 448.38 136.811 454.668 133.878 459.621L133.854 459.647L133.653 460L132.943 461.253L132.936 461.267L132.928 461.28C131.245 464.321 129.905 467.283 128.987 470.854C128.116 474.24 127.721 477.818 127.462 481.97L127.461 481.978V481.986L127.359 483.786L127.358 483.8C127.093 488.843 126.952 493.046 127.584 496.943C128.278 501.222 129.793 504.541 131.549 508.002C134.462 513.741 137.457 518.561 141.411 522.679C145.178 526.602 149.394 529.45 154.295 532.008L154.303 532.013L154.312 532.017L155.264 532.506L155.281 532.515L155.297 532.523L155.887 532.817L155.895 532.821L155.904 532.825C168.913 539.208 183.688 540.49 196.667 535.422L196.667 535.423L196.786 535.377L196.793 535.374L196.8 535.371C199.857 534.166 203.317 532.013 206.35 529.928C217.898 521.99 232.379 510.388 240.969 501.799C227.888 488.717 206.321 467.15 202.078 462.908C196.421 457.251 163.895 424.724 163.895 424.724ZM502.599 425.431C491.713 436.316 480.906 447.284 469.941 458.089C455.027 472.786 440.33 487.7 425.524 502.506C443.1 520.082 460.42 537.807 486.603 537.904C491.75 537.923 496.201 537.914 500.421 536.834C504.849 535.702 508.434 533.552 512.271 531.209L512.944 530.792C519.845 526.463 525.068 521.373 529.745 514.506C532.339 510.697 534.766 507.124 536.112 502.599C537.383 498.327 537.532 493.692 537.707 488.275C537.952 480.62 537.768 473.998 535.014 467.218L534.651 466.357L534.29 465.557C527.073 450.116 505.074 427.906 502.599 425.431ZM184.031 13.8488C170.788 13.4606 156.588 13.8875 147.778 15.6164C136.43 17.8438 117.357 23.7821 108.721 27.9153L108.694 27.9289L107.918 28.3098L107.903 28.3166L107.887 28.3244C84.09 40.3568 60.3723 59.5907 45.4077 79.2385C40.4053 85.8067 34.6836 95.8362 29.7974 105.763C25.2163 115.07 20.9841 125.068 18.6196 132.98L18.6148 132.995L18.6109 133.01L17.6861 136.225L17.7105 136.249C7.65774 174.315 11.8732 217.335 29.2124 252.112C37.0744 267.88 46.9465 282.052 72.2027 309.838C97.3616 337.518 137.98 379.921 208.442 450.887C217.732 460.244 240.616 483.06 250.162 492.606C254.051 488.717 281.279 461.418 287.285 455.483C299.495 443.417 318.397 424.371 323.701 419.067C315.923 411.289 301.219 396.585 294.002 389.369C281.748 377.115 264.845 360.304 246.626 341.993C179.693 274.721 146.596 241.826 129.998 221.535C121.793 211.506 118.245 205.386 116.456 200.472C114.681 195.597 114.343 191.21 113.898 183.281C113.321 173 114.441 164.104 117.636 155.832C120.831 147.563 126.077 139.977 133.671 132.282C156.49 109.162 190.453 110.252 216.632 125.52C216.739 125.638 216.879 125.708 217.03 125.755C217.995 126.35 218.49 126.694 218.851 126.977C219.033 127.119 219.182 127.247 219.304 127.35C219.43 127.456 219.563 127.567 219.748 127.706C220.311 128.132 220.826 128.477 221.385 128.848C221.941 129.217 222.535 129.611 223.218 130.117C223.574 130.381 224.111 130.764 224.715 131.227C226.751 132.785 229.472 135.013 232.343 137.514L250.162 154.609L269.253 135.517L272.082 132.689C278.989 125.919 289.594 114.888 297.891 106.88L322.994 81.7773L306.595 66.7668C275.617 41.1281 229.465 15.1809 184.031 13.8488ZM294.324 294.342C283.109 305.685 266.425 322.194 255.818 332.8C267.792 344.868 282.288 359.364 294.356 371.21C305.469 382.119 322.286 399.268 332.893 409.875C335.014 407.754 358.422 384.491 371.077 371.691C382.312 360.328 399.715 343.053 409.968 332.8C397.24 320.072 382.739 305.543 370.883 293.716C358.205 281.067 339.257 262.09 332.893 255.726C321.249 267.416 305.789 282.746 294.324 294.342ZM516.96 15.5842C508.378 13.9442 496.183 13.3222 484.502 13.469C473.546 13.6067 462.117 14.4315 453.6 16.0578L453.584 16.0617L453.568 16.0647L451.974 16.3869L451.953 16.3908L450.326 16.7453L450.313 16.7483C424.914 22.3953 369.602 59.886 351.985 74.7062C329.711 93.4446 288.623 135.947 251.929 172.641C225.883 198.687 199.839 224.731 173.794 250.776C185.946 263.141 198.305 275.3 210.523 287.6C222.387 299.542 234.723 311.705 246.626 323.608C256.221 313.861 265.897 304.253 275.617 294.616C288.112 282.23 305.01 265.067 323.701 246.533C382.715 188.012 414.355 156.42 433.71 139.069C443.242 130.524 449.529 125.567 454.408 122.436C459.315 119.286 462.783 117.993 466.637 116.747L466.636 116.746L467.054 116.615L467.055 116.616C471.55 115.243 478.428 114.357 485.766 114.292C493.39 114.225 500.151 115.057 504.095 116.345L505.263 116.736C528.916 124.864 545.012 142.459 550.39 165.42L550.533 166.089C551.228 169.634 551.613 176.161 551.224 183.298C550.766 191.708 549.202 199.049 545.525 206.897C537.826 223.328 522.921 238.232 511.084 250.069C516.034 255.018 523.868 262.633 529.171 268.218C534.403 273.727 541.237 280.703 548.069 287.541C560.167 299.651 574.724 313.708 584.623 323.608C584.977 323.961 626.095 268.212 629.947 262.021C669.985 197.654 658.012 118.286 607.238 65.0764C582.63 39.2893 551.474 22.1793 516.96 15.5842ZM488.896 127.297C484.694 127.064 481.003 126.968 477.441 127.478L476.73 127.588C473.214 128.176 470.279 129.305 467.326 130.694L467.313 130.699L467.301 130.705L466.047 131.309L466.036 131.314L466.024 131.32C452.648 137.897 436.064 153.016 424.822 163.811C424.759 163.871 436.788 175.773 438.959 177.944C443.555 182.54 451.151 190.147 463.34 202.329C474.567 213.55 491.285 230.27 501.892 240.876C513.094 229.674 526.528 215.854 533.403 201.393L533.412 201.375L533.419 201.358L533.936 200.234L533.945 200.215L533.953 200.197C544.535 176.334 535.077 148.262 512.527 134.473L512.519 134.468L512.511 134.464L511.147 133.641L511.137 133.634L511.126 133.628L509.936 132.935C507.169 131.356 504.459 130.051 501.386 129.125C497.921 128.081 494.455 127.661 490.588 127.401L490.58 127.4H490.571L488.914 127.298L488.905 127.297H488.896ZM196.358 129.915C172.514 120.76 142.953 133.43 131.74 156.474C125.851 168.58 125.112 186.596 130.496 198.997L130.504 199.017C135.028 209.761 143.19 221.131 151.834 228.91C153.467 230.38 163.786 240.985 163.895 240.876C165.309 239.462 173.087 231.684 176.269 228.502C177.98 226.791 180.158 224.613 182.633 222.138C195.36 209.411 208.088 196.683 220.817 183.954C227.534 177.237 234.252 170.519 240.969 163.802L238.494 161.327C237.787 160.62 236.373 159.205 235.312 158.145C224.662 147.495 210.69 135.42 196.358 129.915Z"/>
+                                            </svg>
+                                            <span class="synthesis-pause-hint">Click to <span class="pause-btn-text">Pause</span></span>
+                                        </div>
+                                        <div class="card-title-group">
+                                            <h3 class="card-title">Synthesis</h3>
+                                            <p class="card-subtitle">Profile data alone fails to predict real-world romantic attraction.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="comparison-column synthesis-box science-box">
+                                            <span class="comp-label">Science</span>
+                                            <span class="comp-text">Profile data alone fails to predict real-world attraction.</span>
+                                        </div>
+                                        <div class="comparison-column synthesis-box apps-box dim">
+                                            <span class="comp-label">Apps</span>
+                                            <span class="comp-text">Relied heavily on profiles.</span>
+                                        </div>
+                                        <div class="comparison-column synthesis-box harmonia-box highlight">
+                                            <span class="comp-label">Harmonia</span>
+                                            <span class="comp-text">Combines all three dimensions for better outcomes.</span>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+                        
+                        <div class="slider-pagination">
+                            <button class="pagination-arrow" id="prevBtn" aria-label="Previous slide">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 18l-6-6 6-6"/>
+                                </svg>
+                            </button>
+                            <div class="pagination-dots">
+                                <div class="pagination-dot active" data-index="0"></div>
+                                <div class="pagination-dot" data-index="1"></div>
+                                <div class="pagination-dot" data-index="2"></div>
+                                <div class="pagination-dot" data-index="3"></div>
+                            </div>
+                            <button class="pagination-arrow" id="nextBtn" aria-label="Next slide">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 18l6-6-6-6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+        
+                    <div class="note-box fade-in delay-4">
+                        <h4>A Note on Compatibility</h4>
+                        <p>
+                            We do not select or filter for 'better' genes. We reveal natural chemistry, not engineer selection. 
+                            The mind handles this itself; Harmonia simply surfaces the invisible signals to help you 
+                            understand real connections.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-inner">
+                <span class="logo-text">Harmonia Engine</span>
+                <div class="footer-links">
+                    <a href="why-harmonia.html">Why Harmonia</a>
+                    <a href="partnerships.html">Ignite Your Platform</a>
+                    <a href="team.html">Team</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <p class="copyright">© 2026 Harmonia Engine</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="assets/js/shared.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

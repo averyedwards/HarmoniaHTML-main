@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>(function(){var t;try{var m=document.cookie.match(/(?:^|;\s*)harmonia-theme=(dark|light)/);if(m)t=m[1];}catch(e){}if(!t){try{t=localStorage.getItem('harmonia-theme');}catch(e){}}document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');}());</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+    <title>Harmonia - Team</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Override synthesis-knot-icon color so gradient fills work correctly */
+        .synthesis-knot-icon {
+            color: transparent !important;
+        }
+        [data-theme="dark"] .synthesis-knot-icon {
+            color: transparent !important;
+            filter: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo" onclick="window.location.href='index.html'">
+            <img src="assets/images/harmonia-logo.png" alt="Harmonia Logo" style="height:40px;width:40px;object-fit:contain;">
+            <span class="sr-only">Harmonia</span>
+        </div>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html" id="nav-home">Home</a></li>
+                <li><a href="why-harmonia.html" id="nav-why-harmonia">Why Harmonia</a></li>
+                <li><a href="partnerships.html" id="nav-partnerships">Ignite Your Platform</a></li>
+                <li><a href="team.html" id="nav-team">Team</a></li>
+                <li><a href="local-network.html" id="nav-local-network">Local Network</a></li>
+                <li><a href="p2p.html" id="nav-p2p">Join Our Testing Pool</a></li>
+                <li><a href="contact.html" id="nav-contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                <div class="theme-toggle-icons">
+                    <svg class="sun-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+                    </svg>
+                    <svg class="moon-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                    </svg>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page active" id="page-team">
+
+        <section class="team-section">
+                <div class="team-header">
+                    <h2>Built by People Who Believe in Connection</h2>
+                    <p>Four founders united by a shared frustration with modern dating.</p>
+                </div>
+        
+                <div class="team-slider-wrapper">
+                    <button class="slider-arrow prev" aria-label="Previous">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+        
+                    <div class="team-slider" id="teamSlider">
+                        <!-- Joles - Armenian Arevakhach (8-arm eternity wheel) - Position: Top Left -->
+                        <div class="team-card">
+                            <svg class="team-avatar-radar" viewBox="0 0 100 100">
+                                <g class="symbol-rotate">
+                                    <path d="M50,50 Q52,35 50,12" fill="none" stroke="var(--maroon)" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M50,50 Q62,42 80,22" fill="none" stroke="var(--maroon)" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M50,50 Q65,52 88,50" fill="none" stroke="var(--maroon)" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M50,50 Q62,58 80,78" fill="none" stroke="var(--maroon)" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M50,50 Q52,65 50,88" fill="none" stroke="var(--maroon)" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M50,50 Q38,58 20,78" fill="none" stroke="var(--maroon)" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M50,50 Q35,52 12,50" fill="none" stroke="var(--maroon)" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M50,50 Q38,42 20,22" fill="none" stroke="var(--maroon)" stroke-width="2.5" stroke-linecap="round"/>
+                                </g>
+                                <circle class="symbol-core" cx="50" cy="50" r="14" fill="rgba(212,168,83,0.25)" stroke="var(--gold)" stroke-width="2"/>
+                            </svg>
+                            <h3>Joles</h3>
+                            <span class="role">Marketing & Brand</span>
+                            <p class="bio">The initial spark: in September 2024, questioned why genetics had been overlooked in dating services. Experienced in scaling large media accounts, logo design, and a wide array of ventures. First investor and secured key early partnerships through an extensive network. Designed the brand aesthetics and visual identity. Drives marketing strategy and outreach.</p>
+                        </div>
+
+                        <div class="team-card">
+                            <svg class="team-avatar-radar" viewBox="0 0 100 100">
+                                <g class="symbol-rotate">
+                                    <circle cx="50" cy="50" r="38" fill="none" stroke="var(--maroon)" stroke-width="1.5"/>
+                                    <path d="M50,15 Q75,15 80,35 Q85,50 75,65 Q65,80 50,85 Q35,80 25,65 Q15,50 20,35 Q25,15 50,15" fill="none" stroke="var(--maroon)" stroke-width="2.5"/>
+                                    <path d="M35,25 Q50,35 65,25" fill="none" stroke="var(--maroon)" stroke-width="2"/>
+                                    <path d="M25,50 Q35,65 25,75" fill="none" stroke="var(--maroon)" stroke-width="2"/>
+                                    <path d="M75,50 Q65,65 75,75" fill="none" stroke="var(--maroon)" stroke-width="2"/>
+                                    <path d="M35,75 Q50,65 65,75" fill="none" stroke="var(--maroon)" stroke-width="2"/>
+                                    <circle cx="35" cy="35" r="4" fill="rgba(114,47,55,0.2)" stroke="var(--maroon)" stroke-width="1"/>
+                                    <circle cx="65" cy="35" r="4" fill="rgba(114,47,55,0.2)" stroke="var(--maroon)" stroke-width="1"/>
+                                    <circle cx="35" cy="65" r="4" fill="rgba(114,47,55,0.2)" stroke="var(--maroon)" stroke-width="1"/>
+                                    <circle cx="65" cy="65" r="4" fill="rgba(114,47,55,0.2)" stroke="var(--maroon)" stroke-width="1"/>
+                                </g>
+                                <circle class="symbol-core" cx="50" cy="50" r="12" fill="rgba(212,168,83,0.25)" stroke="var(--gold)" stroke-width="2"/>
+                            </svg>
+                            <h3>Avery</h3>
+                            <span class="role">Operations</span>
+                            <p class="bio">Pursuing an MSc in Innovation Policy at the London School of Economics. Structured the team from the ground up and meticulously mapped every function, user flow, and operational detail. Ensures the entire system integrates seamlessly and operates efficiently, drawing on deep interest in systems design and management.</p>
+                        </div>
+
+                        <div class="team-card">
+                            <svg class="team-avatar-radar" viewBox="0 0 100 100">
+                                <g class="symbol-rotate">
+                                    <ellipse cx="28" cy="30" rx="6" ry="10" fill="rgba(114,47,55,0.15)" stroke="var(--maroon)" stroke-width="1.2" transform="rotate(-30 28 30)"/>
+                                    <ellipse cx="20" cy="42" rx="6" ry="10" fill="rgba(114,47,55,0.15)" stroke="var(--maroon)" stroke-width="1.2" transform="rotate(-50 20 42)"/>
+                                    <ellipse cx="16" cy="56" rx="6" ry="10" fill="rgba(114,47,55,0.15)" stroke="var(--maroon)" stroke-width="1.2" transform="rotate(-70 16 56)"/>
+                                    <ellipse cx="20" cy="70" rx="6" ry="10" fill="rgba(114,47,55,0.15)" stroke="var(--maroon)" stroke-width="1.2" transform="rotate(-100 20 70)"/>
+                                    <ellipse cx="72" cy="30" rx="6" ry="10" fill="rgba(114,47,55,0.15)" stroke="var(--maroon)" stroke-width="1.2" transform="rotate(30 72 30)"/>
+                                    <ellipse cx="80" cy="42" rx="6" ry="10" fill="rgba(114,47,55,0.15)" stroke="var(--maroon)" stroke-width="1.2" transform="rotate(50 80 42)"/>
+                                    <ellipse cx="84" cy="56" rx="6" ry="10" fill="rgba(114,47,55,0.15)" stroke="var(--maroon)" stroke-width="1.2" transform="rotate(70 84 56)"/>
+                                    <ellipse cx="80" cy="70" rx="6" ry="10" fill="rgba(114,47,55,0.15)" stroke="var(--maroon)" stroke-width="1.2" transform="rotate(100 80 70)"/>
+                                </g>
+                                <circle class="symbol-core" cx="50" cy="85" r="8" fill="rgba(212,168,83,0.25)" stroke="var(--gold)" stroke-width="2"/>
+                            </svg>
+                            <h3>Brian</h3>
+                            <span class="role">CEO</span>
+                            <p class="bio">PhD in Financial Law and Master's in Economics. Extensive experience in fintech, technology law, and regulatory compliance. Provides seasoned guidance on strategy, risk, and what it takes for ventures to thrive long-term.</p>
+                        </div>
+        
+                        <div class="team-card">
+                            <svg class="team-avatar-radar" viewBox="0 0 100 100">
+                                <g class="symbol-rotate">
+                                    <path d="M50,50 Q50,25 70,15 Q88,12 88,32 Q86,48 68,50" fill="none" stroke="var(--maroon)" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M50,50 Q70,62 78,82 Q78,98 58,92 Q42,85 45,68" fill="none" stroke="var(--maroon)" stroke-width="2.5" stroke-linecap="round"/>
+                                    <path d="M50,50 Q30,62 15,55 Q2,42 15,25 Q30,15 42,32" fill="none" stroke="var(--maroon)" stroke-width="2.5" stroke-linecap="round"/>
+                                </g>
+                                <circle class="symbol-core" cx="50" cy="50" r="12" fill="rgba(212,168,83,0.25)" stroke="var(--gold)" stroke-width="2"/>
+                            </svg>
+                            <h3>Abe</h3>
+                            <span class="role">Lead Engineer</span>
+                            <p class="bio">Engineer at Google, having joined the company at age 18 and advanced rapidly through roles in sales, engineering, backend, and frontend development. Grasped the vision in one conversation and joined immediately. Designs, builds, and implements the core technical systems that bring Harmonia to life with precision and scalability.</p>
+                        </div>
+        
+                        <div class="team-card">
+                            <svg class="team-avatar-radar" viewBox="0 0 100 100">
+                                <g class="symbol-rotate">
+                                    <path d="M50,18 Q30,25 28,42 Q30,52 50,50" fill="rgba(114,47,55,0.1)" stroke="var(--maroon)" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M50,50 Q30,48 22,62 Q22,78 42,82" fill="rgba(114,47,55,0.1)" stroke="var(--maroon)" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M50,50 Q70,48 78,62 Q78,78 58,82" fill="rgba(114,47,55,0.1)" stroke="var(--maroon)" stroke-width="2" stroke-linecap="round"/>
+                                    <ellipse cx="50" cy="18" rx="8" ry="4" fill="none" stroke="var(--maroon)" stroke-width="1.5"/>
+                                    <ellipse cx="42" cy="82" rx="7" ry="3" fill="none" stroke="var(--maroon)" stroke-width="1.5"/>
+                                    <ellipse cx="58" cy="82" rx="7" ry="3" fill="none" stroke="var(--maroon)" stroke-width="1.5"/>
+                                </g>
+                                <circle class="symbol-core" cx="50" cy="50" r="10" fill="rgba(212,168,83,0.25)" stroke="var(--gold)" stroke-width="2"/>
+                            </svg>
+                            <h3>Felix</h3>
+                            <span class="role">Neuroscience Advisor</span>
+                            <p class="bio">Holds a Master's in Computational Cognitive Neuroscience from Goldsmiths, University of London, with an additional year of neuroscience studies at the University of Chicago. Brings deep expertise in brain science to ensure Harmonia's approach remains scientifically robust and credible.</p>
+                        </div>
+                    </div>
+        
+                    <button class="slider-arrow next" aria-label="Next">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+                </div>
+        
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+        
+                <!-- Founding Story -->
+                <div class="founding-story">
+                    <div class="story-content">
+                        <p>A question emerged in September 2024. Why had no one integrated genetics into compatibility? Not as a product. As a restoration — returning to signals the body already knows.</p>
+                        <p>Joles shared it with Avery. The answer felt inevitable. Not a disruption. A necessary correction. Infrastructure for connection that should have existed from the start.</p>
+                        <p>Brian recognized it immediately. A legal mind who had seen ventures rise and fall knew this was different. He offered one directive: "Build the right team first."</p>
+                        <p>Then Abe. One conversation. A Google engineer who had been waiting for exactly this problem. Not another dating app. The foundation for something the industry had refused to build. He was in before the call ended.</p>
+                        <p>At the HowTheLightGetsIn festival came Felix — a neuroscientist exploring the intersection of mind and matter. The first demo played. Felix didn't just see code; he saw proof.</p>
+                        <p>Five people. Six months. One question that had always been there, waiting to be asked.</p>
+                    </div>
+                </div>
+            </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-inner">
+                <span class="logo-text">Harmonia Engine</span>
+                <div class="footer-links">
+                    <a href="why-harmonia.html">Why Harmonia</a>
+                    <a href="partnerships.html">Ignite Your Platform</a>
+                    <a href="team.html">Team</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <p class="copyright">© 2026 Harmonia Engine</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="assets/js/shared.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

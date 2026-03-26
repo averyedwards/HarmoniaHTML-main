@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>(function(){var t;try{var m=document.cookie.match(/(?:^|;\s*)harmonia-theme=(dark|light)/);if(m)t=m[1];}catch(e){}if(!t){try{t=localStorage.getItem('harmonia-theme');}catch(e){}}document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');}());</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+    <title>Harmonia - Contact</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Override synthesis-knot-icon color so gradient fills work correctly */
+        .synthesis-knot-icon {
+            color: transparent !important;
+        }
+        [data-theme="dark"] .synthesis-knot-icon {
+            color: transparent !important;
+            filter: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo" onclick="window.location.href='index.html'">
+            <img src="assets/images/harmonia-logo.png" alt="Harmonia Logo" style="height:40px;width:40px;object-fit:contain;">
+            <span class="sr-only">Harmonia</span>
+        </div>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html" id="nav-home">Home</a></li>
+                <li><a href="why-harmonia.html" id="nav-why-harmonia">Why Harmonia</a></li>
+                <li><a href="partnerships.html" id="nav-partnerships">Ignite Your Platform</a></li>
+                <li><a href="team.html" id="nav-team">Team</a></li>
+                <li><a href="local-network.html" id="nav-local-network">Local Network</a></li>
+                <li><a href="p2p.html" id="nav-p2p">Join Our Testing Pool</a></li>
+                <li><a href="contact.html" id="nav-contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                <div class="theme-toggle-icons">
+                    <svg class="sun-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+                    </svg>
+                    <svg class="moon-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                    </svg>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page active" id="page-contact">
+
+        <section class="contact-section">
+                <div class="contact-header">
+                    <h2>Get in Touch</h2>
+                    <p>Whether you're a potential partner, investor, or curious about what we're building — we'd love to hear from you.</p>
+                </div>
+        
+                <div class="contact-layout">
+                    <div class="contact-options">
+                        <div class="contact-card" data-type="platform" onclick="selectContactType(this, 'platform')">
+                            <h3>For Platforms</h3>
+                            <p>Interested in integrating the Harmonia Engine into your platform? Let's discuss how compatibility science can improve your matching.</p>
+                            <span class="card-indicator">Selected →</span>
+                        </div>
+        
+                        <div class="contact-card" data-type="individual" onclick="selectContactType(this, 'individual')">
+                            <h3>For Testing</h3>
+                            <p>Want to be part of our London beta? Join the testing pool and help us refine compatibility matching.</p>
+                            <span class="card-indicator">Selected →</span>
+                        </div>
+        
+                        <div class="contact-card" data-type="other" onclick="selectContactType(this, 'other')">
+                            <h3>General Inquiries</h3>
+                            <p>Press, research collaborations, or just want to say hello? We're always happy to connect.</p>
+                            <span class="card-indicator">Selected →</span>
+                        </div>
+                    </div>
+        
+                    <div class="regal-form-container">
+                        <form class="regal-form" id="contactForm">
+                            <h3>Send a Message</h3>
+                            
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label for="contact-name">Your Name</label>
+                                    <input type="text" id="contact-name" name="name" required placeholder="Jane Smith">
+                                </div>
+                                <div class="input-group">
+                                    <label for="contact-email">Email</label>
+                                    <input type="email" id="contact-email" name="email" required placeholder="jane@example.com">
+                                </div>
+                            </div>
+        
+                            <div class="input-group">
+                                <label for="contact-type">I am a...</label>
+                                <select id="contact-type" name="type" required>
+                                    <option value="">Select...</option>
+                                    <option value="platform">Dating Platform</option>
+                                    <option value="investor">Investor</option>
+                                    <option value="researcher">Researcher</option>
+                                    <option value="press">Press</option>
+                                    <option value="individual">Individual User</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+        
+                            <div class="input-group">
+                                <label for="contact-message">Message</label>
+                                <textarea id="contact-message" name="message" required placeholder="Tell us what you're thinking..."></textarea>
+                            </div>
+        
+                            <button type="submit" class="submit-btn" id="submitBtn">
+                                <span class="btn-text">Send Message</span>
+                                <span class="arrow">→</span>
+                            </button>
+        
+                            <div class="form-success" id="formSuccess">
+                                Message received. We will be in touch shortly.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-inner">
+                <span class="logo-text">Harmonia Engine</span>
+                <div class="footer-links">
+                    <a href="why-harmonia.html">Why Harmonia</a>
+                    <a href="partnerships.html">Ignite Your Platform</a>
+                    <a href="team.html">Team</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <p class="copyright">© 2026 Harmonia Engine</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="assets/js/shared.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

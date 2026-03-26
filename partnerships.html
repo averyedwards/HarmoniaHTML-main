@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>(function(){var t;try{var m=document.cookie.match(/(?:^|;\s*)harmonia-theme=(dark|light)/);if(m)t=m[1];}catch(e){}if(!t){try{t=localStorage.getItem('harmonia-theme');}catch(e){}}document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');}());</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+    <title>Harmonia - Ignite Your Platform</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Override synthesis-knot-icon color so gradient fills work correctly */
+        .synthesis-knot-icon {
+            color: transparent !important;
+        }
+        [data-theme="dark"] .synthesis-knot-icon {
+            color: transparent !important;
+            filter: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo" onclick="window.location.href='index.html'">
+            <img src="assets/images/harmonia-logo.png" alt="Harmonia Logo" style="height:40px;width:40px;object-fit:contain;">
+            <span class="sr-only">Harmonia</span>
+        </div>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html" id="nav-home">Home</a></li>
+                <li><a href="why-harmonia.html" id="nav-why-harmonia">Why Harmonia</a></li>
+                <li><a href="partnerships.html" id="nav-partnerships">Ignite Your Platform</a></li>
+                <li><a href="team.html" id="nav-team">Team</a></li>
+                <li><a href="local-network.html" id="nav-local-network">Local Network</a></li>
+                <li><a href="p2p.html" id="nav-p2p">Join Our Testing Pool</a></li>
+                <li><a href="contact.html" id="nav-contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                <div class="theme-toggle-icons">
+                    <svg class="sun-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+                    </svg>
+                    <svg class="moon-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                    </svg>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page active" id="page-partnerships">
+
+        <section class="partnerships-section">
+                <!-- Tier Tabs - Mobile/Tablet only -->
+                <div class="partnerships-tier-tabs" id="partnershipsTierTabs">
+                    <button class="tier-tab active" data-tier="default">Overview</button>
+                    <button class="tier-tab" data-tier="pilot">Pilot Program</button>
+                    <button class="tier-tab" data-tier="api">API Integration</button>
+                    <button class="tier-tab" data-tier="core">Core License</button>
+                </div>
+
+                <div class="partnerships-layout">
+                    
+                    <div class="partnerships-content">
+                        <div class="content-wrapper" id="partnershipsContentWrapper">
+                            <h2 class="regal-title fade-in-left" id="partnershipsDynamicTitle" style="animation-delay:0.2s;">The Matching Layer You're Missing</h2>
+                            <p class="regal-intro fade-in-top" id="partnershipsDynamicIntro" style="animation-delay:0.28s;">Industry retention rates have stalled at <a href="https://www.businessofapps.com/data/dating-app-benchmarks/" target="_blank" class="stat-link">3.3%</a>. Over <a href="https://www.businessofapps.com/data/dating-app-market/" target="_blank" class="stat-link">half the market's revenue</a> sits with one conglomerate. Harmonia exists for independent platforms ready to compete differently. Shared engine. Individual identity. A dating market where quality determines who wins.</p>
+                            
+                            <div class="feature-boxes" id="partnershipsFeatureBoxes">
+                                <!-- Boxes populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="regal-form-container fade-in-right" style="animation-delay:0.95s;">
+                        <form id="partnershipsIntegrationForm" class="regal-form">
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label for="partnershipCompany">Company</label>
+                                    <input type="text" id="partnershipCompany" name="company" required>
+                                </div>
+                                <div class="input-group">
+                                    <label for="partnershipEmail">Work Email</label>
+                                    <input type="email" id="partnershipEmail" name="email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="partnershipMau">Monthly Active Users</label>
+                                <select id="partnershipMau" name="mau" required>
+                                    <option value="" selected>Select range...</option>
+                                    <option value="<10k">&lt; 10,000</option>
+                                    <option value="10k-100k">10,000 - 100,000</option>
+                                    <option value="100k-1m">100,000 - 1,000,000</option>
+                                    <option value="1m+">1,000,000+</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group interest-input-group">
+                                <label for="partnershipInterest">Interest</label>
+                                <select id="partnershipInterest" name="interest" required>
+                                    <option value="default" selected>Select integration type...</option>
+                                    <option value="pilot">Pilot Program</option>
+                                    <option value="api">Full API Integration</option>
+                                    <option value="core">Core Engine License</option>
+                                </select>
+                            </div>
+        
+                            <div class="input-group">
+                                <label for="partnershipInquiry">Inquiry</label>
+                                <textarea id="partnershipInquiry" name="inquiry" rows="2" placeholder="Tell us about your platform..."></textarea>
+                            </div>
+        
+                            <button type="submit" class="btn-regal-submit" id="partnershipsSubmitBtn">
+                                <span class="btn-text">Request Access</span> <span class="arrow">→</span>
+                            </button>
+                            <div id="partnershipsFormMessage" class="form-message"></div>
+                        </form>
+                    </div>
+        
+                    <div class="partnerships-footer">
+                        <div class="trusted-divider">
+                            <span>Trusted By</span>
+                        </div>
+                        <div class="trusted-logos">
+                            <span class="trusted-name sans">Google Cloud</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <!-- Partnerships Modal -->
+        <div class="partnerships-modal-overlay" id="partnershipsModalOverlay">
+            <div class="partnerships-modal-content">
+                <button class="partnerships-modal-close" onclick="closePartnershipsModal()">×</button>
+                <div class="partnerships-modal-icon" id="partnershipsModalIcon"></div>
+                <h3 class="partnerships-modal-title" id="partnershipsModalTitle"></h3>
+                <p class="partnerships-modal-desc" id="partnershipsModalDesc"></p>
+                <ul class="partnerships-modal-list" id="partnershipsModalList"></ul>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-inner">
+                <span class="logo-text">Harmonia Engine</span>
+                <div class="footer-links">
+                    <a href="why-harmonia.html">Why Harmonia</a>
+                    <a href="partnerships.html">Ignite Your Platform</a>
+                    <a href="team.html">Team</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <p class="copyright">© 2026 Harmonia Engine</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="assets/js/shared.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
