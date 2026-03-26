@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>(function(){var t;try{var m=document.cookie.match(/(?:^|;\s*)harmonia-theme=(dark|light)/);if(m)t=m[1];}catch(e){}if(!t){try{t=localStorage.getItem('harmonia-theme');}catch(e){}}document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');}());</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+    <title>Harmonia - Join Our Testing Pool</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* =====================================================
+           p2p.html page-specific styles
+           ===================================================== */
+
+        /* Hero section */
+        #s-hero {
+            background: var(--cream);
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 3rem;
+            padding-bottom: 5rem;
+        }
+
+        /* Warm ambient radial float, matching the index hero treatment */
+        #s-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse at 30% 30%, rgba(212, 168, 83, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 70%, rgba(139, 58, 58, 0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        [data-theme="dark"] #s-hero::before {
+            background:
+                radial-gradient(ellipse at 30% 30%, rgba(240, 200, 110, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 70%, rgba(139, 58, 58, 0.08) 0%, transparent 50%);
+        }
+
+        /* Single centred column at max-width 780px */
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        /* Element 1: Headline */
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--maroon);
+            margin-bottom: 2rem;
+        }
+
+        [data-theme="dark"] .hero-title {
+            color: var(--gold);
+        }
+
+        /* Element 2: Philosophy-block prose */
+        /* Override philosophy-block margin so it sits flush under the headline */
+        #s-hero .philosophy-block {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        #s-hero .philosophy-block p {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--maroon-deep);
+            margin-bottom: 1.2rem;
+        }
+
+        #s-hero .philosophy-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        [data-theme="dark"] #s-hero .philosophy-block p {
+            color: var(--rose);
+        }
+
+        /* Element 3: Direct address */
+        .hero-address {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--maroon-deep);
+            max-width: 650px;
+            margin: 2rem auto 0;
+            text-align: center;
+        }
+
+        [data-theme="dark"] .hero-address {
+            color: var(--rose);
+        }
+
+        /* Element 4: Closing declaration */
+        .hero-declaration {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            line-height: 1.6;
+            color: var(--gold);
+            max-width: 650px;
+            margin: 1.5rem auto 0;
+            text-align: center;
+        }
+
+        /* Element 5: Supporting text */
+        .hero-supporting {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--slate);
+            text-align: center;
+            margin-top: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Element 6: Email capture row */
+        .hero-capture {
+            max-width: 480px;
+            margin: 1.2rem auto 0;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        .hero-capture input[type="email"] {
+            flex: 1;
+            min-width: 0;
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 168, 83, 0.3);
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            padding: 0.85rem 1.2rem;
+            font-size: 1rem;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--navy);
+            outline: none;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .hero-capture input[type="email"]::placeholder {
+            color: var(--slate);
+            opacity: 0.7;
+        }
+
+        .hero-capture input[type="email"]:focus {
+            border-color: var(--gold);
+        }
+
+        [data-theme="dark"] .hero-capture input[type="email"] {
+            background: var(--dark-surface);
+            color: var(--navy);
+            border-color: rgba(240, 200, 110, 0.2);
+        }
+
+        [data-theme="dark"] .hero-capture input[type="email"]:focus {
+            border-color: var(--gold);
+        }
+
+        .hero-capture .btn-notify {
+            flex-shrink: 0;
+            background: linear-gradient(135deg, var(--gold), var(--gold-champagne));
+            color: var(--maroon-deep);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            padding: 0.85rem 1.8rem;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(212, 168, 83, 0.3);
+        }
+
+        .hero-capture .btn-notify:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 30px rgba(212, 168, 83, 0.5);
+        }
+
+        /* Element 7: Secondary contact link */
+        .hero-contact-link {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            color: var(--slate);
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .hero-contact-link a {
+            color: var(--slate);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .hero-contact-link a:hover {
+            color: var(--gold);
+        }
+
+        /* =====================================================
+           Placeholder section backgrounds (alternating rhythm)
+           ===================================================== */
+
+        #s-overview    { background: var(--blush); padding: 5rem 0; }
+        #s-calibration { background: var(--cream); padding: 5rem 0; }
+        #s-resonance   { background: var(--blush); padding: 5rem 0; }
+        #s-chemistry   { background: var(--cream); padding: 5rem 0; }
+        #s-benefits    { background: var(--blush); padding: 5rem 0; }
+        #s-share       { background: var(--cream); padding: 5rem 0; }
+        #s-cta         { background: var(--blush); padding: 5rem 0; }
+
+        /* =====================================================
+           Responsive overrides
+           ===================================================== */
+
+        @media (max-width: 1024px) {
+            #s-hero {
+                margin-top: 70px;
+                min-height: auto;
+                padding-top: 3rem;
+                padding-bottom: 4rem;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #s-hero {
+                margin-top: 60px;
+                padding-top: 2.5rem;
+            }
+
+            .hero-inner {
+                padding: 0 1.5rem;
+            }
+
+            .hero-title {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #s-hero {
+                margin-top: 55px;
+                padding-top: 2rem;
+                padding-bottom: 3rem;
+            }
+
+            .hero-inner {
+                padding: 0 1rem;
+            }
+
+            /* Stack email capture to single column */
+            .hero-capture {
+                flex-direction: column;
+                max-width: 100%;
+            }
+
+            .hero-capture input[type="email"] {
+                border-right: 1px solid rgba(212, 168, 83, 0.3);
+                border-bottom: none;
+                border-radius: 4px 4px 0 0;
+                width: 100%;
+            }
+
+            [data-theme="dark"] .hero-capture input[type="email"] {
+                border-right: 1px solid rgba(240, 200, 110, 0.2);
+                border-bottom: none;
+            }
+
+            .hero-capture .btn-notify {
+                border-radius: 0 0 4px 4px;
+                width: 100%;
+            }
+
+            #s-overview, #s-calibration, #s-resonance,
+            #s-chemistry, #s-benefits, #s-share, #s-cta {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo" onclick="window.location.href='index.html'">
+            <img src="assets/images/harmonia-logo.png" alt="Harmonia Logo" style="height:40px;width:40px;object-fit:contain;">
+            <span class="sr-only">Harmonia</span>
+        </div>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html" id="nav-home">Home</a></li>
+                <li><a href="why-harmonia.html" id="nav-why-harmonia">Why Harmonia</a></li>
+                <li><a href="partnerships.html" id="nav-partnerships">Ignite Your Platform</a></li>
+                <li><a href="team.html" id="nav-team">Team</a></li>
+                <li><a href="local-network.html" id="nav-local-network">Local Network</a></li>
+                <li><a href="p2p.html" id="nav-p2p">Join Our Testing Pool</a></li>
+                <li><a href="contact.html" id="nav-contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                <div class="theme-toggle-icons">
+                    <svg class="sun-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+                    </svg>
+                    <svg class="moon-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                    </svg>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page active" id="page-p2p">
+
+        <!-- Section 1: Hero -->
+        <section id="s-hero">
+            <div class="hero-inner">
+
+                <!-- Element 1: Headline -->
+                <h1 class="hero-title fade-in">All Desire is a Desire for Being</h1>
+
+                <!-- Element 2: Philosophy-block prose -->
+                <div class="philosophy-block fade-in delay-1">
+                    <p>You already know what it feels like. The scroll that leads nowhere. The matches that never become conversations. The sense, quiet but persistent, that the system was not built to help you find someone but to keep you looking. That feeling is correct. Every platform you have used has optimised for desire: the swipe, the dopamine, the session. None has optimised for what you actually want, which is simpler and harder: to be understood.</p>
+                    <p>Harmonia is not a dating app. It is compatibility infrastructure: a system built to sit inside every platform where people meet, reading the signals you cannot articulate, the patterns in your language, the preferences in your eye, the chemistry in your biology, and translating them into a form you can act upon. By joining our testing pool you participate in the highest level of technological validation there is, the stage at which a system is proven not in a laboratory but in a real environment with real people making real decisions. You are that environment. You are the proof.</p>
+                </div>
+
+                <!-- Element 3: Direct address -->
+                <p class="hero-address fade-in delay-2">If you believe that how people connect should be deeper than what exists; if you believe that understanding is possible and that the right system, built on the right science, could make it visible: you belong here.</p>
+
+                <!-- Element 4: Closing declaration -->
+                <p class="hero-declaration fade-in delay-3">We use AI as a translator, never as a determinant. You are the decider.</p>
+
+                <!-- Element 5: Supporting text -->
+                <p class="hero-supporting">
+                    Testing pool opens early April.<br>
+                    Your data is never monetised. This is research.
+                </p>
+
+                <!-- Element 6: Email capture row -->
+                <div class="hero-capture">
+                    <input type="email" placeholder="your@email.com" autocomplete="email" aria-label="Email address">
+                    <button class="btn-notify" type="button">Notify Me</button>
+                </div>
+
+                <!-- Element 7: Secondary link -->
+                <p class="hero-contact-link">Or <a href="contact.html">reach out to us directly</a>.</p>
+
+            </div>
+        </section>
+
+        <!-- Section 2: How It Works (Phase Overview) - Prompt 3 -->
+        <section id="s-overview">
+            <div class="container">
+                <!-- Phase overview cards: Calibration, Resonance, Chemistry -->
+            </div>
+        </section>
+
+        <!-- Section 3: Phase 1, Calibration - Prompt 3 -->
+        <section id="s-calibration">
+            <div class="container">
+                <!-- Full Phase 1 section with prose, Venn diagram, rating scale, read-more -->
+            </div>
+        </section>
+
+        <!-- Section 4: Phase 2, Resonance - Prompt 4 -->
+        <section id="s-resonance">
+            <div class="container">
+                <!-- Full Phase 2 section with coalescing Venn animation, prose, read-more -->
+            </div>
+        </section>
+
+        <!-- Section 5: Phase 3, Chemistry - Prompt 5 -->
+        <section id="s-chemistry">
+            <div class="container">
+                <!-- Full Phase 3 section with DNA icon, note-box, prose, read-more -->
+            </div>
+        </section>
+
+        <!-- Section 6: What You Get - Prompt 5 -->
+        <section id="s-benefits">
+            <div class="container">
+                <!-- Benefit items list with icons -->
+            </div>
+        </section>
+
+        <!-- Section 7: Tell Your Friends - Prompt 5 -->
+        <section id="s-share">
+            <div class="container">
+                <!-- Share card with copy-link mechanic -->
+            </div>
+        </section>
+
+        <!-- Section 8: CTA and Footer - Prompt 5 -->
+        <section id="s-cta">
+            <div class="container">
+                <!-- Repeated email capture, contact link -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-inner">
+                <span class="logo-text">Harmonia Engine</span>
+                <div class="footer-links">
+                    <a href="why-harmonia.html">Why Harmonia</a>
+                    <a href="partnerships.html">Ignite Your Platform</a>
+                    <a href="team.html">Team</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <p class="copyright">&#169; 2026 Harmonia Engine</p>
+            </div>
+        </footer>
+
+    </div><!-- /#page-p2p -->
+
+    <script src="assets/js/shared.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+        /* p2p.html page-specific script */
+        /* No additional JS required for this prompt beyond shared.js and app.js */
+    </script>
+</body>
+</html>
