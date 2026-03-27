@@ -2,6 +2,42 @@
 
 ---
 
+## Refinement Patch (REFINEMENT_PATCH_P2P.md) -- Typography and interior rhythm
+
+### What changed
+
+- Typography tightened: `.method-para` reduced to 0.88rem/1.6 line-height/0.75rem margin; `.row-body` reduced to 0.95rem/1.55 line-height; `.card-declaration` reduced to 0.95rem with 1rem top margin
+- Card padding reduced to 1.5rem when expanded (collapsed stays 2rem)
+- `.card-row` margin-top reduced from 1.2rem to 0.9rem
+- `.card-method-inner` and `.tell-friends` top spacing tightened to 0.8rem/1rem
+- `.more-info-btn` margin-top reduced from 1.5rem to 1rem
+- Row labels given gold left border accent (`border-left: 2px solid var(--gold); padding-left: 0.5rem`) matching note-box vocabulary
+- Subtle horizontal dividers added between content rows (`border-top: 1px solid rgba(212,168,83,0.08); padding-top: 0.9rem` on `.card-row + .card-row`)
+- Methodology section given note-box treatment: `border-left: 2px solid var(--gold)`, `background: linear-gradient(90deg, rgba(212,168,83,0.05), transparent)`, `border-radius: 0 8px 8px 0`
+- "A note on the methodology" label added as first child of each `.card-method-inner` (`.method-label` class, 0.7rem uppercase, 0.1em letter-spacing, gold, 0.8 opacity)
+- Collapsed cards given one-line phase subtitles (`card-phase-subtitle`): "Visual preferences and personality mapping", "Mutual matching and perceived similarity", "Biological compatibility via HLA analysis"
+- Subtitles hidden via `display: none` when card is not in collapsed state
+- Collapsed card min-height reduced from 140px to 120px
+- `scrollIntoView` changed from `block: 'center'` to `block: 'start'`; `scroll-margin-top: 100px` added to `.phase-card` to clear the nav
+- "More information" button given `::before` horizontal rule divider (`linear-gradient(90deg, transparent, rgba(212,168,83,0.15), transparent)`)
+- Tell-friends block given panel treatment: `background: rgba(212,168,83,0.03)`, `border-radius: 8px`, `border-left: 2px solid rgba(212,168,83,0.2)`, `border-top: none`
+- `.card-body-inner` given `padding-top: 0.5rem` to separate centred header from left-aligned content
+
+### Verification checklist
+
+- [x] Expanded card fits more comfortably on screen
+- [x] Row labels show gold left border accent
+- [x] Subtle horizontal dividers visible between rows
+- [x] Methodology section has gold left border, gradient background, and "A note on the methodology" label
+- [x] Collapsed cards show subtitle beneath phase name
+- [x] Subtitles hidden when card is expanded
+- [x] ScrollIntoView scrolls to top of card with nav clearance
+- [x] "More information" trigger has horizontal rule above it
+- [x] Tell-friends block has subtle background panel treatment
+- [x] No em dashes
+
+---
+
 ## Prompt 2 — Scaffold and Hero
 
 ### What was built

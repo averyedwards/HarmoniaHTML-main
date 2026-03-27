@@ -304,10 +304,20 @@
             opacity: 1;
         }
 
+        /* Expanded card: tighter padding */
+        .phase-card:not([data-state="collapsed"]) {
+            padding: 1.5rem;
+        }
+
+        /* Scroll clearance for nav (80px nav + 20px breathing room) */
+        .phase-card {
+            scroll-margin-top: 100px;
+        }
+
         /* Collapsed card: cursor pointer, min-height, hover lift */
         .phase-card[data-state="collapsed"] {
             cursor: pointer;
-            min-height: 140px;
+            min-height: 120px;
         }
 
         .phase-card[data-state="collapsed"]:hover {
@@ -516,12 +526,13 @@
 
         .card-body-inner {
             text-align: left;
+            padding-top: 0.5rem;
         }
 
         /* ---------- Card rows (curtain reveal via JS) ---------- */
 
         .card-row {
-            margin-top: 1.2rem;
+            margin-top: 0.9rem;
         }
 
         .card-row:first-child {
@@ -536,16 +547,60 @@
             letter-spacing: 0.06em;
             color: var(--gold);
             margin-bottom: 0.3rem;
+            border-left: 2px solid var(--gold);
+            padding-left: 0.5rem;
         }
 
         [data-theme="dark"] .row-label {
             text-shadow: 0 0 12px rgba(212,168,83,0.2);
         }
 
+        /* Row dividers */
+        .card-row + .card-row {
+            border-top: 1px solid rgba(212,168,83,0.08);
+            padding-top: 0.9rem;
+        }
+
+        [data-theme="dark"] .card-row + .card-row {
+            border-top-color: rgba(212,168,83,0.06);
+        }
+
+        /* Methodology section label */
+        .method-label {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            margin-bottom: 0.6rem;
+            opacity: 0.8;
+        }
+
+        /* Collapsed card subtitle */
+        .card-phase-subtitle {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            color: var(--slate);
+            opacity: 0.6;
+            margin-top: 0.15rem;
+            line-height: 1.3;
+        }
+
+        [data-theme="dark"] .card-phase-subtitle {
+            color: var(--rose);
+            opacity: 0.5;
+        }
+
+        /* Hide subtitle when expanded */
+        .phase-card:not([data-state="collapsed"]) .card-phase-subtitle {
+            display: none;
+        }
+
         .row-body {
             font-family: 'DM Sans', sans-serif;
-            font-size: 1rem;
-            line-height: 1.65;
+            font-size: 0.95rem;
+            line-height: 1.55;
             color: var(--navy);
             margin: 0;
         }
@@ -557,13 +612,17 @@
         /* ---------- Tell your friends (Card 3) ---------- */
 
         .tell-friends {
-            margin-top: 1.5rem;
-            padding-top: 1.2rem;
-            border-top: 1px solid rgba(212,168,83,0.18);
+            background: rgba(212,168,83,0.03);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-top: none;
+            border-left: 2px solid rgba(212,168,83,0.2);
         }
 
         [data-theme="dark"] .tell-friends {
-            border-top-color: rgba(240,200,110,0.1);
+            background: rgba(212,168,83,0.04);
+            border-top: none;
         }
 
         .tell-friends-text {
@@ -607,10 +666,29 @@
             font-family: 'DM Sans', sans-serif;
             font-size: 0.85rem;
             cursor: pointer;
-            margin-top: 1.5rem;
-            padding: 0;
+            margin-top: 1rem;
+            padding-top: 0.8rem;
+            padding-left: 0;
+            padding-right: 0;
+            padding-bottom: 0;
             width: 100%;
+            position: relative;
             transition: opacity 0.2s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .more-info-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(212,168,83,0.15),
+                transparent
+            );
         }
 
         .more-info-btn:hover {
@@ -637,21 +715,25 @@
         }
 
         .card-method-inner {
-            border-top: 1px solid rgba(212,168,83,0.15);
-            margin-top: 1.2rem;
-            padding-top: 1.2rem;
+            border-top: none;
+            border-left: 2px solid var(--gold);
+            background: linear-gradient(90deg, rgba(212,168,83,0.05), transparent);
+            border-radius: 0 8px 8px 0;
+            margin-top: 0.8rem;
+            padding: 0.8rem 1rem;
         }
 
         [data-theme="dark"] .card-method-inner {
-            border-top-color: rgba(240,200,110,0.1);
+            background: linear-gradient(90deg, rgba(212,168,83,0.06), transparent);
+            border-top: none;
         }
 
         .method-para {
             font-family: 'DM Sans', sans-serif;
-            font-size: 0.95rem;
-            line-height: 1.75;
+            font-size: 0.88rem;
+            line-height: 1.6;
             color: var(--navy);
-            margin: 0 0 1.1rem;
+            margin: 0 0 0.75rem;
         }
 
         .method-para:last-child {
@@ -665,11 +747,11 @@
         /* Declaration inside card */
         .card-declaration {
             font-family: 'DM Sans', sans-serif;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             font-weight: 600;
             line-height: 1.6;
             color: var(--gold);
-            margin: 0;
+            margin: 1rem 0 0;
             text-align: center;
         }
 
@@ -961,6 +1043,7 @@
                                 </svg>
                             </div>
                             <p class="card-phase-name">Calibration</p>
+                            <span class="card-phase-subtitle">Visual preferences and personality mapping</span>
                         </div>
 
                         <div class="card-body-wrap">
@@ -989,6 +1072,7 @@
 
                                 <div class="card-method-wrap">
                                     <div class="card-method-inner">
+                                        <span class="method-label">A note on the methodology</span>
                                         <p class="method-para" style="--j: 0">The visual system operates in two stages. In the first stage, the model learns what most people find attractive. It studies how large numbers of people rate the same faces and identifies the patterns that emerge: the features and proportions and qualities that most people agree on. This is the foundation, an understanding of aesthetic commonality.</p>
                                         <p class="method-para" style="--j: 1">In the second stage, the model freezes that baseline understanding and turns its attention to you. It takes your individual ratings and learns how your preferences deviate from the consensus. Where do you diverge from what most people find attractive? What patterns are unique to your eye? The model builds a personalised layer on top of the frozen baseline that captures your aesthetic personality: the individual variation that makes your sense of attraction yours and no one else's.</p>
                                         <p class="method-para" style="--j: 2">Every rating you give teaches the model something. A 1 teaches it what you reject. A 5 teaches it what captivates you. A 3, the uncertain middle, teaches it where your preferences are ambiguous, and the model learns to navigate that ambiguity. No other platform does this. Every other system runs one model for all users, treating attraction as a population-level phenomenon with no room for individual taste. This system treats every user as a unique case.</p>
@@ -1028,6 +1112,7 @@
                                 </svg>
                             </div>
                             <p class="card-phase-name">Resonance</p>
+                            <span class="card-phase-subtitle">Mutual matching and perceived similarity</span>
                         </div>
 
                         <div class="card-body-wrap">
@@ -1056,6 +1141,7 @@
 
                                 <div class="card-method-wrap">
                                     <div class="card-method-inner">
+                                        <span class="method-label">A note on the methodology</span>
                                         <p class="method-para" style="--j: 0">The personality assessment consists of six open-ended scenario questions drawn from real life: how you handle a group dinner bill, what you do with a free weekend, how you respond to critical feedback. These are not multiple choice. You write your natural response in your own words. The AI reads your language and maps you across seven personality dimensions.</p>
                                         <p class="method-para" style="--j: 1">We chose scenario-based questions because research demonstrates that a significant proportion of people distort traditional self-report questionnaires. When you are asked "are you generous?" you answer the way you want to be seen. When you are asked what you do when the dinner bill arrives and everyone contributed differently, your answer reveals how you actually behave.</p>
                                         <p class="method-para" style="--j: 2">The system surfaces perceived similarity: the degree to which you and another person feel alike. Research has consistently shown that feeling similar to someone predicts attraction far more powerfully than actually being similar. Two people who share very few traits on paper can feel a profound sense of commonality when the right dimensions are highlighted. The system finds what you share and presents it; it never penalises where you differ.</p>
@@ -1101,6 +1187,7 @@
                                 </svg>
                             </div>
                             <p class="card-phase-name">Chemistry</p>
+                            <span class="card-phase-subtitle">Biological compatibility via HLA analysis</span>
                         </div>
 
                         <div class="card-body-wrap">
@@ -1135,6 +1222,7 @@
 
                                 <div class="card-method-wrap">
                                     <div class="card-method-inner">
+                                        <span class="method-label">A note on the methodology</span>
                                         <p class="method-para" style="--j: 0">HLA genes, the Human Leukocyte Antigen complex, are the part of your immune system responsible for identifying foreign molecules. Research spanning decades has demonstrated that people tend to be attracted to partners with different HLA profiles, a preference linked to scent perception and unconscious biological signals. Partners with complementary HLA types tend to report higher mutual attraction. We chose to implement this because it adds a dimension to compatibility that no questionnaire and no photograph can capture: the chemistry that exists before a word is spoken.</p>
                                         <p class="method-para" style="--j: 1">No other platform has deployed genetics commercially into how people meet. This is the first time the biological signal has been combined with visual and personality data in a system designed to surface compatibility, and by participating you contribute to proving whether it works.</p>
                                         <p class="method-para" style="--j: 2">Across the three phases, your profile has built itself in layers. Phase 1 captured your visual preferences and your personality. Phase 2 tested those signals against real people who found you attractive and measured how your decisions were shaped by what you saw and what you felt. Phase 3 adds the final dimension: the chemistry written into your biology, the invisible signal that operates below the level of conscious awareness. The report you receive at the end of Phase 3 is the most complete picture of compatibility that has ever been assembled for a single person. It shows not just who you are drawn to, but why, across every dimension that the research says matters.</p>
@@ -1400,7 +1488,7 @@
 
                 /* Scroll card to center after expansion begins */
                 setTimeout(function () {
-                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 100);
             }
 
