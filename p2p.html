@@ -9,37 +9,30 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <style>
         /* =====================================================
-           p2p.html page-specific styles
+           p2p.html page-specific styles -- Revised Build
+           Three-phase expandable card system
            ===================================================== */
 
         /* Hero section */
         #s-hero {
+            position: relative;
             background: var(--cream);
             margin-top: 80px;
             min-height: calc(100vh - 80px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+            padding: 4rem 1.5rem 5rem;
             overflow: hidden;
-            padding-top: 3rem;
-            padding-bottom: 5rem;
         }
 
-        /* Warm ambient radial float, matching the index hero treatment */
         #s-hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            inset: 0;
             background:
                 radial-gradient(ellipse at 30% 30%, rgba(212, 168, 83, 0.06) 0%, transparent 50%),
                 radial-gradient(ellipse at 70% 70%, rgba(139, 58, 58, 0.05) 0%, transparent 50%);
             animation: float 20s ease-in-out infinite;
-            z-index: 0;
             pointer-events: none;
+            z-index: 0;
         }
 
         [data-theme="dark"] #s-hero::before {
@@ -48,98 +41,398 @@
                 radial-gradient(ellipse at 70% 70%, rgba(139, 58, 58, 0.08) 0%, transparent 50%);
         }
 
-        /* Single centred column at max-width 780px */
-        .hero-inner {
+        .p2p-inner {
             position: relative;
             z-index: 1;
-            max-width: 780px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 2rem;
             text-align: center;
+            max-width: 760px;
+            margin: 0 auto;
         }
 
-        /* Element 1: Headline */
-        .hero-title {
+        /* Headline */
+        .p2p-headline {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-            font-weight: 600;
-            line-height: 1.2;
             color: var(--maroon);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
-        [data-theme="dark"] .hero-title {
+        [data-theme="dark"] .p2p-headline {
             color: var(--gold);
         }
 
-        /* Element 2: Philosophy-block prose */
-        /* Override philosophy-block margin so it sits flush under the headline */
-        #s-hero .philosophy-block {
-            margin-top: 0;
-            text-align: center;
-        }
-
-        #s-hero .philosophy-block p {
+        /* Context line */
+        .p2p-context {
             font-family: 'DM Sans', sans-serif;
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             line-height: 1.7;
             color: var(--maroon-deep);
-            margin-bottom: 1.2rem;
+            max-width: 680px;
+            margin: 0 auto 2rem;
         }
 
-        #s-hero .philosophy-block p:last-child {
+        [data-theme="dark"] .p2p-context {
+            color: var(--rose);
+        }
+
+        /* Phase tabs (top bar) */
+        .phase-tabs-wrapper {
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .phase-tabs {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid rgba(212, 168, 83, 0.2);
+        }
+
+        .phase-tab {
+            flex: 1;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            padding: 0.6rem 1rem 0.8rem;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .tab-prefix {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--slate);
+            line-height: 1;
+        }
+
+        .tab-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--navy);
+            transition: color 0.3s ease;
+            line-height: 1.1;
+        }
+
+        [data-theme="dark"] .tab-name {
+            color: var(--rose);
+        }
+
+        .phase-tab.active {
+            border-bottom-color: var(--gold);
+        }
+
+        .phase-tab.active .tab-name {
+            color: var(--maroon);
+        }
+
+        [data-theme="dark"] .phase-tab.active .tab-name {
+            color: var(--gold);
+        }
+
+        .phase-tab:hover .tab-name {
+            opacity: 0.8;
+        }
+
+        /* Card section container */
+        .card-section {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Card viewport -- clip-path clips sliding cards horizontally
+           without clipping vertical expansion of the active card */
+        .card-viewport {
+            clip-path: inset(-9999px 0);
+            position: relative;
+            width: 100%;
+        }
+
+        /* Card track -- slides via translateX */
+        .card-track {
+            display: flex;
+            width: 300%;
+            transition: transform 0.3s ease-out;
+            will-change: transform;
+            align-items: flex-start;
+        }
+
+        /* Phase cards */
+        .phase-card {
+            width: calc(100% / 3);
+            flex-shrink: 0;
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 168, 83, 0.15);
+            border-radius: 8px;
+            padding: 2rem;
+            box-sizing: border-box;
+            text-align: center;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        [data-theme="dark"] .phase-card {
+            background: var(--dark-surface, #1e1013);
+            border-color: rgba(240, 200, 110, 0.1);
+        }
+
+        .phase-card[data-state="collapsed"] {
+            cursor: pointer;
+            min-height: 140px;
+        }
+
+        .phase-card[data-state="collapsed"]:hover {
+            border-color: rgba(212, 168, 83, 0.4);
+        }
+
+        [data-theme="dark"] .phase-card[data-state="collapsed"]:hover {
+            border-color: rgba(240, 200, 110, 0.25);
+        }
+
+        /* Card header: icon + phase name */
+        .card-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .phase-card:not([data-state="collapsed"]) .card-header {
+            margin-bottom: 1.5rem;
+        }
+
+        /* SVG icon container */
+        .card-icon {
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Stroke-draw animation paths -- reset and animate in JS on expansion */
+        .icon-draw {
+            transition: stroke-dashoffset 0.6s ease;
+        }
+
+        .card-phase-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        [data-theme="dark"] .card-phase-name {
+            color: var(--rose);
+        }
+
+        /* Expandable card body -- max-height transition for universal browser support */
+        .card-body-wrap {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .card-body-inner {
+            text-align: left;
+        }
+
+        /* Card rows */
+        .card-row {
+            margin-top: 1.2rem;
+        }
+
+        .card-row:first-child {
+            margin-top: 0;
+        }
+
+        .row-label {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .row-body {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            line-height: 1.65;
+            color: var(--navy);
+            margin: 0;
+        }
+
+        [data-theme="dark"] .row-body {
+            color: var(--rose);
+        }
+
+        /* Tell your friends block (Card 3 only) */
+        .tell-friends {
+            margin-top: 1.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(212, 168, 83, 0.18);
+        }
+
+        [data-theme="dark"] .tell-friends {
+            border-top-color: rgba(240, 200, 110, 0.1);
+        }
+
+        .tell-friends-text {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--navy);
+            margin: 0 0 0.9rem;
+        }
+
+        [data-theme="dark"] .tell-friends-text {
+            color: var(--rose);
+        }
+
+        .copy-link-btn {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 4px;
+            padding: 0.5rem 1.2rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .copy-link-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* More information trigger */
+        .more-info-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            padding: 0;
+            width: 100%;
+            transition: opacity 0.2s ease;
+        }
+
+        .more-info-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Chevron SVG inside more-info button */
+        .chevron-icon {
+            width: 0.6rem;
+            height: auto;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .phase-card[data-state="expanded-2"] .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Second expansion methodology content */
+        .card-method-wrap {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .card-method-inner {
+            border-top: 1px solid rgba(212, 168, 83, 0.15);
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+        }
+
+        [data-theme="dark"] .card-method-inner {
+            border-top-color: rgba(240, 200, 110, 0.1);
+        }
+
+        .method-para {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: var(--navy);
+            margin: 0 0 1.1rem;
+        }
+
+        .method-para:last-child {
             margin-bottom: 0;
         }
 
-        [data-theme="dark"] #s-hero .philosophy-block p {
+        [data-theme="dark"] .method-para {
             color: var(--rose);
         }
 
-        /* Element 3: Direct address */
-        .hero-address {
+        /* Declaration inside card -- identical styling to page declaration */
+        .card-declaration {
             font-family: 'DM Sans', sans-serif;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--maroon-deep);
-            max-width: 650px;
-            margin: 2rem auto 0;
-            text-align: center;
-        }
-
-        [data-theme="dark"] .hero-address {
-            color: var(--rose);
-        }
-
-        /* Element 4: Closing declaration */
-        .hero-declaration {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 600;
             line-height: 1.6;
             color: var(--gold);
-            max-width: 650px;
-            margin: 1.5rem auto 0;
+            margin: 0;
             text-align: center;
         }
 
-        /* Element 5: Supporting text */
-        .hero-supporting {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.85rem;
-            color: var(--slate);
-            text-align: center;
-            margin-top: 2rem;
-            line-height: 1.6;
+        /* Pagination dots */
+        .phase-dots-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
         }
 
-        /* Element 6: Email capture row */
+        .phase-dot {
+            width: 12px;
+            height: 4px;
+            border-radius: 2px;
+            background: var(--gold-light);
+            opacity: 0.5;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        .phase-dot.active {
+            width: 32px;
+            opacity: 1;
+            background: var(--maroon-deep);
+        }
+
+        [data-theme="dark"] .phase-dot.active {
+            background: var(--gold);
+        }
+
+        /* Email capture */
         .hero-capture {
             max-width: 480px;
-            margin: 1.2rem auto 0;
+            margin: 2rem auto 0;
             display: flex;
             flex-direction: row;
-            align-items: stretch;
         }
 
         .hero-capture input[type="email"] {
@@ -154,7 +447,6 @@
             font-family: 'DM Sans', sans-serif;
             color: var(--navy);
             outline: none;
-            transition: border-color 0.3s ease, background 0.3s ease;
         }
 
         .hero-capture input[type="email"]::placeholder {
@@ -162,22 +454,14 @@
             opacity: 0.7;
         }
 
-        .hero-capture input[type="email"]:focus {
-            border-color: var(--gold);
-        }
-
         [data-theme="dark"] .hero-capture input[type="email"] {
-            background: var(--dark-surface);
+            background: var(--dark-surface, #1e1013);
             color: var(--navy);
             border-color: rgba(240, 200, 110, 0.2);
+            border-right: none;
         }
 
-        [data-theme="dark"] .hero-capture input[type="email"]:focus {
-            border-color: var(--gold);
-        }
-
-        .hero-capture .btn-notify {
-            flex-shrink: 0;
+        .btn-notify {
             background: linear-gradient(135deg, var(--gold), var(--gold-champagne));
             color: var(--maroon-deep);
             border: none;
@@ -186,114 +470,61 @@
             font-size: 1rem;
             font-weight: 600;
             font-family: 'DM Sans', sans-serif;
-            cursor: pointer;
             white-space: nowrap;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(212, 168, 83, 0.3);
+            cursor: pointer;
+            transition: opacity 0.2s ease;
         }
 
-        .hero-capture .btn-notify:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 30px rgba(212, 168, 83, 0.5);
+        .btn-notify:hover {
+            opacity: 0.9;
         }
 
-        /* Element 7: Secondary contact link */
-        .hero-contact-link {
+        /* Page-level declaration */
+        .hero-declaration {
             font-family: 'DM Sans', sans-serif;
-            font-size: 0.8rem;
-            color: var(--slate);
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .hero-contact-link a {
-            color: var(--slate);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .hero-contact-link a:hover {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.6;
             color: var(--gold);
+            margin-top: 1.5rem;
+            text-align: center;
         }
 
-        /* =====================================================
-           Placeholder section backgrounds (alternating rhythm)
-           ===================================================== */
-
-        #s-overview    { background: var(--blush); padding: 5rem 0; }
-        #s-calibration { background: var(--cream); padding: 5rem 0; }
-        #s-resonance   { background: var(--blush); padding: 5rem 0; }
-        #s-chemistry   { background: var(--cream); padding: 5rem 0; }
-        #s-benefits    { background: var(--blush); padding: 5rem 0; }
-        #s-share       { background: var(--cream); padding: 5rem 0; }
-        #s-cta         { background: var(--blush); padding: 5rem 0; }
-
-        /* =====================================================
-           Responsive overrides
-           ===================================================== */
-
-        @media (max-width: 1024px) {
-            #s-hero {
-                margin-top: 70px;
-                min-height: auto;
-                padding-top: 3rem;
-                padding-bottom: 4rem;
-                align-items: flex-start;
-            }
-        }
-
-        @media (max-width: 768px) {
-            #s-hero {
-                margin-top: 60px;
-                padding-top: 2.5rem;
-            }
-
-            .hero-inner {
-                padding: 0 1.5rem;
-            }
-
-            .hero-title {
-                margin-bottom: 1.5rem;
-            }
-        }
-
+        /* Mobile: 480px and below */
         @media (max-width: 480px) {
-            #s-hero {
-                margin-top: 55px;
-                padding-top: 2rem;
-                padding-bottom: 3rem;
+            /* Hide phase number prefix; show phase name only */
+            .tab-prefix {
+                display: none;
             }
 
-            .hero-inner {
-                padding: 0 1rem;
+            .tab-name {
+                font-size: 0.95rem;
             }
 
-            /* Stack email capture to single column */
+            .phase-tab {
+                padding: 0.5rem 0.5rem 0.7rem;
+            }
+
+            /* Email capture stacks to column */
             .hero-capture {
                 flex-direction: column;
-                max-width: 100%;
             }
 
             .hero-capture input[type="email"] {
                 border-right: 1px solid rgba(212, 168, 83, 0.3);
                 border-bottom: none;
-                border-radius: 4px 4px 0 0;
-                width: 100%;
+                border-radius: 4px;
             }
 
             [data-theme="dark"] .hero-capture input[type="email"] {
-                border-right: 1px solid rgba(240, 200, 110, 0.2);
+                border-right-color: rgba(240, 200, 110, 0.2);
                 border-bottom: none;
             }
 
-            .hero-capture .btn-notify {
-                border-radius: 0 0 4px 4px;
+            .btn-notify {
+                border-radius: 4px;
+                margin-top: 0.5rem;
                 width: 100%;
-            }
-
-            #s-overview, #s-calibration, #s-resonance,
-            #s-chemistry, #s-benefits, #s-share, #s-cta {
-                padding: 3rem 0;
             }
         }
     </style>
@@ -334,92 +565,274 @@
         </div>
     </nav>
 
+    <!-- Page wrapper -->
     <div class="page active" id="page-p2p">
 
-        <!-- Section 1: Hero -->
+        <!-- Hero section: the entire page -->
         <section id="s-hero">
-            <div class="hero-inner">
+            <div class="p2p-inner">
 
                 <!-- Element 1: Headline -->
-                <h1 class="hero-title fade-in">All Desire is a Desire for Being</h1>
+                <h1 class="p2p-headline fade-in">The Testing Pool Opens Early April</h1>
 
-                <!-- Element 2: Philosophy-block prose -->
-                <div class="philosophy-block fade-in delay-1">
-                    <p>You already know what it feels like. The scroll that leads nowhere. The matches that never become conversations. The sense, quiet but persistent, that the system was not built to help you find someone but to keep you looking. That feeling is correct. Every platform you have used has optimised for desire: the swipe, the dopamine, the session. None has optimised for what you actually want, which is simpler and harder: to be understood.</p>
-                    <p>Harmonia is not a dating app. It is compatibility infrastructure: a system built to sit inside every platform where people meet, reading the signals you cannot articulate, the patterns in your language, the preferences in your eye, the chemistry in your biology, and translating them into a form you can act upon. By joining our testing pool you participate in the highest level of technological validation there is, the stage at which a system is proven not in a laboratory but in a real environment with real people making real decisions. You are that environment. You are the proof.</p>
+                <!-- Element 2: Context line -->
+                <p class="p2p-context fade-in delay-1">Harmonia is a compatibility engine, and by joining our testing pool you participate in the highest level of technological validation there is: real people, real decisions, real proof. Your data is never monetised. This is research.</p>
+
+                <!-- Element 3: Top bar (phase navigation) -->
+                <div class="phase-tabs-wrapper fade-in delay-2">
+                    <div class="phase-tabs" role="tablist" aria-label="Testing pool phases">
+                        <button class="phase-tab active" role="tab" aria-selected="true" data-phase="0">
+                            <span class="tab-prefix">Phase 1</span>
+                            <span class="tab-name">Calibration</span>
+                        </button>
+                        <button class="phase-tab" role="tab" aria-selected="false" data-phase="1">
+                            <span class="tab-prefix">Phase 2</span>
+                            <span class="tab-name">Resonance</span>
+                        </button>
+                        <button class="phase-tab" role="tab" aria-selected="false" data-phase="2">
+                            <span class="tab-prefix">Phase 3</span>
+                            <span class="tab-name">Chemistry</span>
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Element 3: Direct address -->
-                <p class="hero-address fade-in delay-2">If you believe that how people connect should be deeper than what exists; if you believe that understanding is possible and that the right system, built on the right science, could make it visible: you belong here.</p>
+                <!-- Element 4: Card container -->
+                <div class="card-section fade-in delay-2">
+                    <div class="card-viewport" id="card-viewport">
+                        <div class="card-track" id="card-track">
 
-                <!-- Element 4: Closing declaration -->
-                <p class="hero-declaration fade-in delay-3">We use AI as a translator, never as a determinant. You are the decider.</p>
+                            <!-- Card 1: Phase 1 Calibration -->
+                            <div class="phase-card" id="card-0" data-state="collapsed" data-phase="0">
+                                <!-- Card header: always visible -->
+                                <div class="card-header" id="card-0-header">
+                                    <!-- Eye motif SVG icon -->
+                                    <div class="card-icon">
+                                        <svg class="phase-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                            <!-- Outer almond eye shape -->
+                                            <path class="icon-draw" d="M10,50 C30,20 70,20 90,50 C70,80 30,80 10,50 Z" stroke="var(--gold)" stroke-width="2" fill="none" stroke-dasharray="230" stroke-dashoffset="0" data-dash="230"/>
+                                            <!-- Iris circle -->
+                                            <circle class="icon-draw" cx="50" cy="50" r="15" stroke="var(--gold)" stroke-width="2" fill="none" stroke-dasharray="95" stroke-dashoffset="0" data-dash="95"/>
+                                            <!-- Pupil -->
+                                            <circle cx="50" cy="50" r="5" fill="var(--maroon)"/>
+                                            <!-- Diamond overlay -->
+                                            <path class="icon-draw" d="M50,30 L62,50 L50,70 L38,50 Z" stroke="var(--gold)" stroke-width="1.5" fill="none" opacity="0.55" stroke-dasharray="90" stroke-dashoffset="0" data-dash="90"/>
+                                            <!-- Corner accent dots -->
+                                            <circle cx="10" cy="50" r="3" fill="var(--maroon)"/>
+                                            <circle cx="90" cy="50" r="3" fill="var(--maroon)"/>
+                                        </svg>
+                                    </div>
+                                    <p class="card-phase-name">Calibration</p>
+                                </div>
 
-                <!-- Element 5: Supporting text -->
-                <p class="hero-supporting">
-                    Testing pool opens early April.<br>
-                    Your data is never monetised. This is research.
-                </p>
+                                <!-- Card body: expanded on first click -->
+                                <div class="card-body-wrap">
+                                    <div class="card-body-inner">
+                                        <!-- Three rows -->
+                                        <div class="card-rows">
+                                            <div class="card-row">
+                                                <span class="row-label">What you do</span>
+                                                <p class="row-body">Complete a six-question personality assessment. Upload your photos. Rate faces on a scale of 1 to 5.</p>
+                                            </div>
+                                            <div class="card-row">
+                                                <span class="row-label">How it works</span>
+                                                <p class="row-body">A personalised neural network is shown the faces you rate. It first learns what most people find attractive: the consensus, the population-level baseline of aesthetic perception. Then it freezes that understanding and turns its attention to you specifically, learning how your preferences differ from everyone else's. Every rating teaches it something about your eye.</p>
+                                            </div>
+                                            <div class="card-row">
+                                                <span class="row-label">What you get</span>
+                                                <p class="row-body">A personalised map of the looks you are specifically drawn to: the features, the patterns, the qualities your eye returns to. Your Seven Deadly Sins personality profile: seven dimensions, each running from virtue to vice, capturing how you actually behave rather than how you describe yourself.</p>
+                                            </div>
+                                        </div>
 
-                <!-- Element 6: Email capture row -->
-                <div class="hero-capture">
-                    <input type="email" placeholder="your@email.com" autocomplete="email" aria-label="Email address">
+                                        <!-- More information trigger -->
+                                        <button class="more-info-btn" aria-expanded="false">
+                                            <span class="btn-text">More information</span>
+                                            <svg class="chevron-icon" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path d="M1 1L5 5L9 1" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </button>
+
+                                        <!-- Second expansion: methodology content -->
+                                        <div class="card-method-wrap">
+                                            <div class="card-method-inner">
+                                                <p class="method-para">The visual system operates in two stages. In the first stage, the model learns what most people find attractive. It studies how large numbers of people rate the same faces and identifies the patterns that emerge: the features and proportions and qualities that most people agree on. This is the foundation, an understanding of aesthetic commonality.</p>
+                                                <p class="method-para">In the second stage, the model freezes that baseline understanding and turns its attention to you. It takes your individual ratings and learns how your preferences deviate from the consensus. Where do you diverge from what most people find attractive? What patterns are unique to your eye? The model builds a personalised layer on top of the frozen baseline that captures your aesthetic personality: the individual variation that makes your sense of attraction yours and no one else's.</p>
+                                                <p class="method-para">Every rating you give teaches the model something. A 1 teaches it what you reject. A 5 teaches it what captivates you. A 3, the uncertain middle, teaches it where your preferences are ambiguous, and the model learns to navigate that ambiguity. No other platform does this. Every other system runs one model for all users, treating attraction as a population-level phenomenon with no room for individual taste. This system treats every user as a unique case.</p>
+                                                <p class="method-para">The AI does not just read your questionnaire answers; it detects inconsistencies between what you say and how you say it. If you claim you never get angry but your language reveals frustration, impatience, or confrontation, we notice. If you rush through the questionnaire giving extreme answers to every question, the system detects that pattern and flags it as a response style rather than a genuine personality signal. If you give disengaged, neutral answers to everything, we detect that too. Your profile reflects who you actually are, not who you want to be.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end Card 1 -->
+
+                            <!-- Card 2: Phase 2 Resonance -->
+                            <div class="phase-card" id="card-1" data-state="collapsed" data-phase="1">
+                                <!-- Card header: always visible -->
+                                <div class="card-header" id="card-1-header">
+                                    <!-- Overlapping circles (Venn diagram) SVG icon -->
+                                    <div class="card-icon">
+                                        <svg class="phase-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                            <!-- Intersection fill (lens shape) -->
+                                            <path d="M50,24.7 A28,28 0 0,0 50,75.3 A28,28 0 0,0 50,24.7 Z" fill="var(--gold)" fill-opacity="0.1"/>
+                                            <!-- Left circle -->
+                                            <circle class="icon-draw" cx="38" cy="50" r="28" stroke="var(--gold)" stroke-width="2" fill="none" stroke-dasharray="180" stroke-dashoffset="0" data-dash="180"/>
+                                            <!-- Right circle -->
+                                            <circle class="icon-draw" cx="62" cy="50" r="28" stroke="var(--gold)" stroke-width="2" fill="none" stroke-dasharray="180" stroke-dashoffset="0" data-dash="180"/>
+                                            <!-- Centre accent dot at intersection -->
+                                            <circle cx="50" cy="50" r="3.5" fill="var(--maroon)"/>
+                                        </svg>
+                                    </div>
+                                    <p class="card-phase-name">Resonance</p>
+                                </div>
+
+                                <!-- Card body: expanded on first click -->
+                                <div class="card-body-wrap">
+                                    <div class="card-body-inner">
+                                        <!-- Three rows -->
+                                        <div class="card-rows">
+                                            <div class="card-row">
+                                                <span class="row-label">What you do</span>
+                                                <p class="row-body">From Phase 1, the system filters for people who are attracted to you and you to them. From this filtered batch, you are shown two people at a time. You choose one. Their personality is attached to their card: a Venn diagram showing what you share, how your Seven Deadly Sins profiles overlap. If you choose the same person three times across different pairings, that is a confirmed match.</p>
+                                            </div>
+                                            <div class="card-row">
+                                                <span class="row-label">How it works</span>
+                                                <p class="row-body">Perceived similarity. The system finds what you and each person have in common and surfaces it. You see the overlap, never the differences. Personality and visual together shape who appears in front of you and who you choose.</p>
+                                            </div>
+                                            <div class="card-row">
+                                                <span class="row-label">What you get</span>
+                                                <p class="row-body">A match where the attraction runs both ways: someone drawn to you, and you to them, with shared personality to make it last. A personalised insights report showing how visual attraction versus personality shaped your decisions, what you prioritised, and what patterns emerged in your choices.</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- More information trigger -->
+                                        <button class="more-info-btn" aria-expanded="false">
+                                            <span class="btn-text">More information</span>
+                                            <svg class="chevron-icon" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path d="M1 1L5 5L9 1" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </button>
+
+                                        <!-- Second expansion: methodology content -->
+                                        <div class="card-method-wrap">
+                                            <div class="card-method-inner">
+                                                <p class="method-para">The personality assessment consists of six open-ended scenario questions drawn from real life: how you handle a group dinner bill, what you do with a free weekend, how you respond to critical feedback. These are not multiple choice. You write your natural response in your own words. The AI reads your language and maps you across seven personality dimensions.</p>
+                                                <p class="method-para">We chose scenario-based questions because research demonstrates that a significant proportion of people distort traditional self-report questionnaires. When you are asked "are you generous?" you answer the way you want to be seen. When you are asked what you do when the dinner bill arrives and everyone contributed differently, your answer reveals how you actually behave.</p>
+                                                <p class="method-para">The system surfaces perceived similarity: the degree to which you and another person feel alike. Research has consistently shown that feeling similar to someone predicts attraction far more powerfully than actually being similar. Two people who share very few traits on paper can feel a profound sense of commonality when the right dimensions are highlighted. The system finds what you share and presents it; it never penalises where you differ.</p>
+                                                <p class="method-para">The three-selection confirmation ensures consistency over impulse. It is not enough to choose someone once. You must prefer them repeatedly, across different pairings, against different alternatives. Each time you select the same person, a heart is confirmed. Three hearts across three separate pairings: that is a match.</p>
+                                                <p class="method-para">In Phase 1, you built your visual preference model and your personality profile as separate signals. In Phase 2, those two signals combine for the first time. The filtered batch means everyone you see already finds you attractive. The question Phase 2 answers is whether personality changes who you choose from a pool where you already find everyone visually compelling.</p>
+                                                <p class="method-para">The insights report is honest. It will not pander to you. If you consistently chose based on appearance and ignored personality signals, the report will tell you that. If you gravitated toward a specific personality type across every pairing, it will surface that pattern. No other platform offers this level of self-awareness about your own decision-making.</p>
+                                                <!-- Declaration: identical styling to page-level declaration (Flag 6) -->
+                                                <p class="card-declaration">We use AI as a translator, never as a determinant. You are the decider.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end Card 2 -->
+
+                            <!-- Card 3: Phase 3 Chemistry -->
+                            <div class="phase-card" id="card-2" data-state="collapsed" data-phase="2">
+                                <!-- Card header: always visible -->
+                                <div class="card-header" id="card-2-header">
+                                    <!-- DNA double helix SVG icon -->
+                                    <div class="card-icon">
+                                        <svg class="phase-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                            <!-- Strand 1: arcs from top-left, crosses at center, continues to bottom-left -->
+                                            <path class="icon-draw" d="M30,5 C70,22 70,43 30,50 C70,57 70,78 30,95" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" fill="none" stroke-dasharray="260" stroke-dashoffset="0" data-dash="260"/>
+                                            <!-- Strand 2: mirror of strand 1 -->
+                                            <path class="icon-draw" d="M70,5 C30,22 30,43 70,50 C30,57 30,78 70,95" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" fill="none" stroke-dasharray="260" stroke-dashoffset="0" data-dash="260"/>
+                                            <!-- Top rung -->
+                                            <line class="icon-draw" x1="30" y1="5" x2="70" y2="5" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="40" stroke-dashoffset="0" data-dash="40"/>
+                                            <!-- Upper-mid rung (between strands after first cross) -->
+                                            <line class="icon-draw" x1="39" y1="28" x2="61" y2="28" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="22" stroke-dashoffset="0" data-dash="22"/>
+                                            <!-- Centre rung (at fold point) -->
+                                            <line class="icon-draw" x1="30" y1="50" x2="70" y2="50" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="40" stroke-dashoffset="0" data-dash="40"/>
+                                            <!-- Lower-mid rung -->
+                                            <line class="icon-draw" x1="39" y1="72" x2="61" y2="72" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="22" stroke-dashoffset="0" data-dash="22"/>
+                                            <!-- Bottom rung -->
+                                            <line class="icon-draw" x1="30" y1="95" x2="70" y2="95" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="40" stroke-dashoffset="0" data-dash="40"/>
+                                            <!-- Accent dots at rung midpoints -->
+                                            <circle cx="50" cy="5" r="2.5" fill="var(--maroon)"/>
+                                            <circle cx="50" cy="28" r="2.5" fill="var(--maroon)"/>
+                                            <circle cx="50" cy="50" r="2.5" fill="var(--maroon)"/>
+                                            <circle cx="50" cy="72" r="2.5" fill="var(--maroon)"/>
+                                            <circle cx="50" cy="95" r="2.5" fill="var(--maroon)"/>
+                                        </svg>
+                                    </div>
+                                    <p class="card-phase-name">Chemistry</p>
+                                </div>
+
+                                <!-- Card body: expanded on first click -->
+                                <div class="card-body-wrap">
+                                    <div class="card-body-inner">
+                                        <!-- Three rows -->
+                                        <div class="card-rows">
+                                            <div class="card-row">
+                                                <span class="row-label">What you do</span>
+                                                <p class="row-body">For London users: receive a free DNA testing kit. Swab, send it back. For everyone else: if you already have DNA results from a provider like 23andMe or AncestryDNA, you can send them to us.</p>
+                                            </div>
+                                            <div class="card-row">
+                                                <span class="row-label">How it works</span>
+                                                <p class="row-body">We process your DNA and determine HLA compatibility: the degree to which your immune system profiles complement each other, a signal linked to scent, attraction, and biological chemistry.</p>
+                                            </div>
+                                            <div class="card-row">
+                                                <span class="row-label">What you get</span>
+                                                <p class="row-body">The full three-signal assessment: visual attraction, personality, and biological compatibility combined. An elaborated version of your Phase 1 and Phase 2 results showing how your insights have evolved across all three phases and what the complete picture reveals that the earlier reports could not.</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Tell your friends block (Card 3 only) -->
+                                        <div class="tell-friends">
+                                            <p class="tell-friends-text">Phase 3 requires critical mass. The genetic signal cannot operate in isolation; it requires a pool dense enough to produce meaningful matches. If you want Phase 3 in your region, the most powerful thing you can do is share this page with the people you know.</p>
+                                            <button class="copy-link-btn" id="copy-link-btn">Copy Link</button>
+                                        </div>
+
+                                        <!-- More information trigger -->
+                                        <button class="more-info-btn" aria-expanded="false">
+                                            <span class="btn-text">More information</span>
+                                            <svg class="chevron-icon" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path d="M1 1L5 5L9 1" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </button>
+
+                                        <!-- Second expansion: methodology content -->
+                                        <div class="card-method-wrap">
+                                            <div class="card-method-inner">
+                                                <p class="method-para">HLA genes, the Human Leukocyte Antigen complex, are the part of your immune system responsible for identifying foreign molecules. Research spanning decades has demonstrated that people tend to be attracted to partners with different HLA profiles, a preference linked to scent perception and unconscious biological signals. Partners with complementary HLA types tend to report higher mutual attraction. We chose to implement this because it adds a dimension to compatibility that no questionnaire and no photograph can capture: the chemistry that exists before a word is spoken.</p>
+                                                <p class="method-para">No other platform has deployed genetics commercially into how people meet. This is the first time the biological signal has been combined with visual and personality data in a system designed to surface compatibility, and by participating you contribute to proving whether it works.</p>
+                                                <p class="method-para">Across the three phases, your profile has built itself in layers. Phase 1 captured your visual preferences and your personality. Phase 2 tested those signals against real people who found you attractive and measured how your decisions were shaped by what you saw and what you felt. Phase 3 adds the final dimension: the chemistry written into your biology, the invisible signal that operates below the level of conscious awareness. The report you receive at the end of Phase 3 is the most complete picture of compatibility that has ever been assembled for a single person. It shows not just who you are drawn to, but why, across every dimension that the research says matters.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end Card 3 -->
+
+                        </div>
+                        <!-- end .card-track -->
+                    </div>
+                    <!-- end .card-viewport -->
+
+                    <!-- Pagination dots -->
+                    <div class="phase-dots-row" role="tablist" aria-label="Phase navigation dots">
+                        <button class="phase-dot active" data-phase="0" aria-label="Phase 1: Calibration"></button>
+                        <button class="phase-dot" data-phase="1" aria-label="Phase 2: Resonance"></button>
+                        <button class="phase-dot" data-phase="2" aria-label="Phase 3: Chemistry"></button>
+                    </div>
+                </div>
+                <!-- end .card-section -->
+
+                <!-- Element 5: Email capture (non-functional) -->
+                <div class="hero-capture fade-in delay-3">
+                    <input type="email" placeholder="your@email.com" aria-label="Email address">
                     <button class="btn-notify" type="button">Notify Me</button>
                 </div>
 
-                <!-- Element 7: Secondary link -->
-                <p class="hero-contact-link">Or <a href="contact.html">reach out to us directly</a>.</p>
+                <!-- Element 6: Declaration -->
+                <p class="hero-declaration fade-in delay-3">We use AI as a translator, never as a determinant. You are the decider.</p>
 
             </div>
-        </section>
-
-        <!-- Section 2: How It Works (Phase Overview) - Prompt 3 -->
-        <section id="s-overview">
-            <div class="container">
-                <!-- Phase overview cards: Calibration, Resonance, Chemistry -->
-            </div>
-        </section>
-
-        <!-- Section 3: Phase 1, Calibration - Prompt 3 -->
-        <section id="s-calibration">
-            <div class="container">
-                <!-- Full Phase 1 section with prose, Venn diagram, rating scale, read-more -->
-            </div>
-        </section>
-
-        <!-- Section 4: Phase 2, Resonance - Prompt 4 -->
-        <section id="s-resonance">
-            <div class="container">
-                <!-- Full Phase 2 section with coalescing Venn animation, prose, read-more -->
-            </div>
-        </section>
-
-        <!-- Section 5: Phase 3, Chemistry - Prompt 5 -->
-        <section id="s-chemistry">
-            <div class="container">
-                <!-- Full Phase 3 section with DNA icon, note-box, prose, read-more -->
-            </div>
-        </section>
-
-        <!-- Section 6: What You Get - Prompt 5 -->
-        <section id="s-benefits">
-            <div class="container">
-                <!-- Benefit items list with icons -->
-            </div>
-        </section>
-
-        <!-- Section 7: Tell Your Friends - Prompt 5 -->
-        <section id="s-share">
-            <div class="container">
-                <!-- Share card with copy-link mechanic -->
-            </div>
-        </section>
-
-        <!-- Section 8: CTA and Footer - Prompt 5 -->
-        <section id="s-cta">
-            <div class="container">
-                <!-- Repeated email capture, contact link -->
-            </div>
+            <!-- end .p2p-inner -->
         </section>
 
         <!-- Footer -->
@@ -436,13 +849,278 @@
             </div>
         </footer>
 
-    </div><!-- /#page-p2p -->
+    </div>
+    <!-- end #page-p2p -->
 
     <script src="assets/js/shared.js"></script>
     <script src="assets/js/app.js"></script>
     <script>
-        /* p2p.html page-specific script */
-        /* No additional JS required for this prompt beyond shared.js and app.js */
+        /* =====================================================
+           p2p.html page-specific JavaScript
+           Three-phase expandable card system
+           ===================================================== */
+
+        (function () {
+            'use strict';
+
+            /* --- State --- */
+            var currentPhase = 0;
+            var isNavigating = false;
+
+            /* --- DOM references --- */
+            var cardTrack = document.getElementById('card-track');
+            var cardViewport = document.getElementById('card-viewport');
+            var cards = document.querySelectorAll('.phase-card');
+            var tabs = document.querySelectorAll('.phase-tab');
+            var dots = document.querySelectorAll('.phase-dot');
+            var moreInfoBtns = document.querySelectorAll('.more-info-btn');
+
+            /* --- Utility: set track position without transition --- */
+            function setTrackPositionInstant(phase) {
+                cardTrack.style.transition = 'none';
+                cardTrack.style.transform = 'translateX(' + (-phase * (100 / 3)) + '%)';
+                /* Force reflow so the transition-none takes effect */
+                cardTrack.getBoundingClientRect();
+                cardTrack.style.transition = 'transform 0.3s ease-out';
+            }
+
+            /* --- Utility: set track position with slide transition --- */
+            function setTrackPosition(phase) {
+                cardTrack.style.transition = 'transform 0.3s ease-out';
+                cardTrack.style.transform = 'translateX(' + (-phase * (100 / 3)) + '%)';
+            }
+
+            /* --- Utility: update active tab and dot --- */
+            function updateActiveIndicators(phase) {
+                tabs.forEach(function (tab, i) {
+                    tab.classList.toggle('active', i === phase);
+                    tab.setAttribute('aria-selected', i === phase ? 'true' : 'false');
+                });
+                dots.forEach(function (dot, i) {
+                    dot.classList.toggle('active', i === phase);
+                });
+            }
+
+            /* --- Height helpers using scrollHeight for accurate animation --- */
+            function getBodyScrollH(card) {
+                /* scrollHeight of body-inner reveals full content height regardless of max-height:0 */
+                var inner = card.querySelector('.card-body-inner');
+                return inner ? inner.scrollHeight : 0;
+            }
+
+            function getMethodScrollH(card) {
+                var inner = card.querySelector('.card-method-inner');
+                return inner ? inner.scrollHeight : 0;
+            }
+
+            /* --- Collapse a card to its collapsed state --- */
+            function collapseCard(card) {
+                var bodyWrap = card.querySelector('.card-body-wrap');
+                var methodWrap = card.querySelector('.card-method-wrap');
+                /* Pin current max-height to a pixel value first (required for transition to 0) */
+                if (bodyWrap.style.maxHeight && bodyWrap.style.maxHeight !== '0px') {
+                    bodyWrap.style.maxHeight = bodyWrap.scrollHeight + 'px';
+                }
+                if (methodWrap.style.maxHeight && methodWrap.style.maxHeight !== '0px') {
+                    methodWrap.style.maxHeight = methodWrap.scrollHeight + 'px';
+                }
+                /* Collapse both wraps */
+                bodyWrap.style.maxHeight = '0px';
+                methodWrap.style.maxHeight = '0px';
+                card.dataset.state = 'collapsed';
+                /* Reset more-info button */
+                var btn = card.querySelector('.more-info-btn');
+                if (btn) {
+                    btn.querySelector('.btn-text').textContent = 'More information';
+                    btn.setAttribute('aria-expanded', 'false');
+                }
+            }
+
+            /* --- Expand card to first expansion state --- */
+            function expandToFirst(card) {
+                var bodyWrap = card.querySelector('.card-body-wrap');
+                bodyWrap.style.maxHeight = getBodyScrollH(card) + 'px';
+                card.dataset.state = 'expanded-1';
+                /* Trigger SVG icon draw animation */
+                triggerIconAnimation(card);
+            }
+
+            /* --- Toggle second expansion --- */
+            function toggleSecondExpansion(card, btn) {
+                var methodWrap = card.querySelector('.card-method-wrap');
+                var bodyWrap = card.querySelector('.card-body-wrap');
+                if (card.dataset.state === 'expanded-2') {
+                    /* Collapse second expansion back to first */
+                    methodWrap.style.maxHeight = '0px';
+                    /* Shrink body wrap back to first-expansion height */
+                    bodyWrap.style.maxHeight = getBodyScrollH(card) + 'px';
+                    card.dataset.state = 'expanded-1';
+                    btn.querySelector('.btn-text').textContent = 'More information';
+                    btn.setAttribute('aria-expanded', 'false');
+                } else {
+                    /* Expand to second expansion */
+                    var methodH = getMethodScrollH(card);
+                    methodWrap.style.maxHeight = methodH + 'px';
+                    /* Also grow body wrap to accommodate method content */
+                    bodyWrap.style.maxHeight = (getBodyScrollH(card) + methodH) + 'px';
+                    card.dataset.state = 'expanded-2';
+                    btn.querySelector('.btn-text').textContent = 'Show less';
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            }
+
+            /* --- Trigger SVG stroke-draw animation --- */
+            function triggerIconAnimation(card) {
+                var draws = card.querySelectorAll('.icon-draw');
+                draws.forEach(function (el) {
+                    var dash = el.dataset.dash || el.getAttribute('stroke-dasharray') || '300';
+                    el.style.transition = 'none';
+                    el.style.strokeDashoffset = dash;
+                    /* Double rAF: ensures browser paints the reset before animating */
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(function () {
+                            el.style.transition = 'stroke-dashoffset 0.6s ease';
+                            el.style.strokeDashoffset = '0';
+                        });
+                    });
+                });
+            }
+
+            /* --- Navigate to a phase --- */
+            function navigateToPhase(targetPhase) {
+                if (isNavigating) return;
+                if (targetPhase < 0 || targetPhase > 2) return;
+                if (targetPhase === currentPhase) return;
+
+                isNavigating = true;
+
+                var currentCard = cards[currentPhase];
+                var isExpanded = currentCard.dataset.state !== 'collapsed';
+                var collapseDelay = isExpanded ? 420 : 0;
+
+                /* Step 1: collapse current card if expanded */
+                if (isExpanded) {
+                    collapseCard(currentCard);
+                }
+
+                /* Step 2: after collapse animation, slide to new card */
+                setTimeout(function () {
+                    currentPhase = targetPhase;
+                    setTrackPosition(currentPhase);
+                    updateActiveIndicators(currentPhase);
+
+                    /* Re-enable navigation after slide completes */
+                    setTimeout(function () {
+                        isNavigating = false;
+                    }, 320);
+                }, collapseDelay);
+            }
+
+            /* --- Card header click: expand from collapsed state --- */
+            cards.forEach(function (card) {
+                card.addEventListener('click', function (e) {
+                    /* Only expand when in collapsed state */
+                    if (card.dataset.state !== 'collapsed') return;
+                    /* Ensure click is not on a child button */
+                    if (e.target.closest('.more-info-btn') || e.target.closest('.copy-link-btn')) return;
+                    expandToFirst(card);
+                });
+            });
+
+            /* --- More information buttons --- */
+            moreInfoBtns.forEach(function (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    var card = btn.closest('.phase-card');
+                    if (!card) return;
+                    /* Only toggle if card is in first or second expansion */
+                    if (card.dataset.state === 'collapsed') return;
+                    toggleSecondExpansion(card, btn);
+                });
+            });
+
+            /* --- Top bar tab clicks --- */
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    var targetPhase = parseInt(tab.dataset.phase, 10);
+                    navigateToPhase(targetPhase);
+                });
+            });
+
+            /* --- Pagination dot clicks --- */
+            dots.forEach(function (dot) {
+                dot.addEventListener('click', function () {
+                    var targetPhase = parseInt(dot.dataset.phase, 10);
+                    navigateToPhase(targetPhase);
+                });
+            });
+
+            /* --- Touch / swipe support --- */
+            var touchStartX = 0;
+            var touchStartY = 0;
+
+            cardViewport.addEventListener('touchstart', function (e) {
+                touchStartX = e.changedTouches[0].clientX;
+                touchStartY = e.changedTouches[0].clientY;
+            }, { passive: true });
+
+            cardViewport.addEventListener('touchend', function (e) {
+                var dx = touchStartX - e.changedTouches[0].clientX;
+                var dy = touchStartY - e.changedTouches[0].clientY;
+                /* Only treat as horizontal swipe if primarily horizontal */
+                if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+                if (dx > 0) {
+                    navigateToPhase(currentPhase + 1); /* swipe left: advance */
+                } else {
+                    navigateToPhase(currentPhase - 1); /* swipe right: retreat */
+                }
+            }, { passive: true });
+
+            /* --- Copy link button (Card 3) --- */
+            var copyBtn = document.getElementById('copy-link-btn');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(window.location.href).then(function () {
+                            copyBtn.textContent = 'Copied!';
+                            copyBtn.style.color = 'var(--gold)';
+                            setTimeout(function () {
+                                copyBtn.textContent = 'Copy Link';
+                                copyBtn.style.color = '';
+                            }, 3000);
+                        }).catch(function () {
+                            /* Fallback for clipboard write failure */
+                            copyBtn.textContent = 'Copy Link';
+                        });
+                    } else {
+                        /* Fallback for browsers without clipboard API */
+                        var textArea = document.createElement('textarea');
+                        textArea.value = window.location.href;
+                        textArea.style.position = 'fixed';
+                        textArea.style.top = '-9999px';
+                        document.body.appendChild(textArea);
+                        textArea.focus();
+                        textArea.select();
+                        try {
+                            document.execCommand('copy');
+                            copyBtn.textContent = 'Copied!';
+                            setTimeout(function () {
+                                copyBtn.textContent = 'Copy Link';
+                            }, 3000);
+                        } catch (err) {
+                            /* Silent fail */
+                        }
+                        document.body.removeChild(textArea);
+                    }
+                });
+            }
+
+            /* --- Initialise: set track position to Phase 1 without animation --- */
+            setTrackPositionInstant(0);
+            updateActiveIndicators(0);
+
+        }());
     </script>
 </body>
 </html>
