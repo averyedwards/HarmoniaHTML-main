@@ -41,6 +41,82 @@
 
 ---
 
+## Visual Patch (VISUAL_PATCH_P2P.md) -- Premium vertical stack
+
+### What changed from the revised build
+
+- **Layout changed from horizontal slider to vertical card stack.** `.card-viewport` and `.card-track` wrappers removed. All three `.phase-card` elements sit directly in `.card-section` as vertical children in natural document flow.
+- **Pagination dots removed.** All three cards are visible simultaneously; dots serve no purpose.
+- **Swipe navigation removed.** `touchstart`/`touchend` handlers deleted. Cards are stationary and vertically stacked.
+- **`setTrackPosition` and `setTrackPositionInstant` functions removed.** No horizontal translation occurs.
+- **Gold connector lines added between cards.** Two `.phase-connector` elements (one between Card 1 and Card 2, one between Card 2 and Card 3) contain a 1px gradient gold vertical line. A travelling shimmer dot animates from top to bottom every 5 seconds via `@keyframes connectorShimmer`. Connectors dim to 40% opacity when a card is active.
+- **Card surface depth upgraded.** Border is now a gradient border using `padding-box`/`border-box` background layering. Dark mode: maroon-to-gold-to-maroon gradient border. Light mode: maroon at 0.2 opacity. Four-layer box-shadow in dark mode. Border-radius increased from 8px to 12px.
+- **Active/inactive card hierarchy added.** When a card expands, `.has-active` is added to `.card-section` and `.is-active` to the active card. Inactive cards reduce to `opacity: 0.55`, `scale(0.98)`, `brightness(0.7) saturate(0.5)`. Active card gets `@keyframes goldPulse` breathing glow animation.
+- **Ambient glow pseudo-element added.** `.phase-card::before` with `inset: -20px` and a radial gold gradient fades in when card becomes `.is-active`.
+- **Collapsed card hover lift added.** Inactive collapsed cards lift `translateY(-4px)` with expanded box-shadow on hover, mirroring the team.html card treatment.
+- **Living SVG icon animations added:**
+  - Eye (Calibration): `.eye-lid-group` blinks via `@keyframes eyeBlink` every 5s. Iris drifts horizontally via `@keyframes irisDrift` over 6s. Iris pulses scale via `@keyframes irisBreath` over 4s. Lid and iris use `transform-box: fill-box; transform-origin: center`.
+  - Overlapping circles (Resonance): Left circle breathes right, right circle breathes left via `@keyframes circleBreathLeft/Right` over 4s. Vesica piscis fill pulses via `@keyframes lensGlow`. Centre dot pulses scale via `@keyframes dotPulseScale`.
+  - DNA helix (Chemistry): Rung lines simulate Y-axis rotation via `@keyframes helixRung` at 8s with staggered `-0.8s` delays per rung. Strands sway via `@keyframes helixSway/SwayReverse` over 6s. Accent dots pulse from maroon to gold in travelling wave via `@keyframes helixDotGold` with 0.5s staggered delays.
+- **Icon glow baseline and intensification added.** All icons have `filter: drop-shadow(0 0 3px rgba(212,168,83,0.25)) drop-shadow(0 0 8px rgba(212,168,83,0.12))`. When card is `.is-active`, glow intensifies to `drop-shadow(0 0 6px ..0.5) drop-shadow(0 0 16px ..0.25)`.
+- **Icon size increased** from 90px to 100px container.
+- **Icon spring transformation on expansion.** Active card icon scales 1.08x and rotates 10 degrees with spring easing `cubic-bezier(0.34,1.56,0.64,1)`.
+- **Staggered content reveal with clip-path curtain unveil.** On card expansion, rows are instantly reset to `clip-path: inset(0 0 100% 0); opacity: 0; transform: translateY(8px)`, then revealed with `clip-path: inset(0); opacity: 1; transform: translateY(0)` staggered at `150ms + (--i * 80ms)` delay per element. Easing: `cubic-bezier(0.19,1,0.22,1)`. Applied to all `.card-row`, `.tell-friends`, and `.more-info-btn` elements via inline `--i` CSS custom properties.
+- **Method paragraphs revealed with same curtain stagger.** On second expansion, `.method-para` and `.card-declaration` elements reveal with `--j * 60ms` staggered delays.
+- **Collapse reverse stagger.** On collapse, rows hide in reverse order `(maxI - i) * 60ms` before max-height collapses.
+- **`--i` custom properties added to all card rows** (0, 1, 2), `.tell-friends` (3 in Card 3), and `.more-info-btn` (3 in Cards 1 and 2, 4 in Card 3).
+- **`--j` custom properties added to all method paragraphs** (0, 1, 2... per card) and `.card-declaration` (6 in Card 2).
+- **Phase name gold shimmer in dark mode.** `.phase-card.is-active .card-phase-name` gets `background-clip: text` with `@keyframes textShimmer` over 8s. Light mode retains standard `color: var(--navy)`.
+- **Row label glow in dark mode.** `[data-theme="dark"] .row-label` gains `text-shadow: 0 0 12px rgba(212,168,83,0.2)`.
+- **Premium easing curves applied throughout.** All transitions use `cubic-bezier(0.19,1,0.22,1)` (primary state changes), `cubic-bezier(0.4,0,0.2,1)` (hover/dim), `cubic-bezier(0.34,1.56,0.64,1)` (icon spring), `cubic-bezier(0.5,0,0.5,1)` (organic breathing). No `ease` or `linear` used for visible transitions.
+- **Tab click behaviour repurposed.** Instead of sliding the track, tab clicks now call `expandToFirst()` on the target card (if collapsed) or `scrollIntoView()` (if already expanded).
+- **`scrollIntoView` added.** After expansion begins, `card.scrollIntoView({ behavior: 'smooth', block: 'center' })` fires after 100ms delay.
+- **`has-active`/`is-active` class management added.** JS adds/removes these classes to drive all CSS hierarchy rules.
+- **`prefers-reduced-motion` support added.** All continuous CSS animations disabled. Expand/collapse transitions set to 0s duration. Static depth (gradients, shadows, borders, glow) retained. Card system fully functional in reduced-motion mode.
+- **Mobile responsive adjustments.** Connector height reduces to 20px at 480px. Active card box-shadow reduces to two layers and animation disabled at 480px. Ambient glow inset reduces from 20px to 10px.
+
+### What was preserved
+
+- All card prose verbatim (not a single word changed).
+- Nav structure and footer identical to all other pages.
+- Email capture unchanged.
+- Top bar tab structure unchanged.
+- Declaration in both locations unchanged.
+- Page title unchanged.
+- No em dashes.
+- No references to harmonia-preview/.
+- `pageFadeIn` entrance animation via `.page.active`.
+- Theme integration via `shared.js`.
+- Copy-link button behaviour unchanged.
+
+### Verification checklist
+
+- [ ] All three cards visible vertically on page load, all collapsed
+- [ ] Clicking a collapsed card expands it and scrolls it to center
+- [ ] Expanded card has gold glow; siblings recede (opacity, scale, brightness, saturation)
+- [ ] Clicking another card collapses the first and expands the new one
+- [ ] Top bar tabs scroll to and expand the corresponding card
+- [ ] "More information" opens second expansion with staggered curtain unveil
+- [ ] "Show less" collapses second expansion
+- [ ] Eye icon blinks and iris scans continuously
+- [ ] Overlapping circles breathe apart and together continuously
+- [ ] DNA helix rungs create spiral wave animation
+- [ ] Icon glow intensifies when card is expanded
+- [ ] Gold connector lines visible between cards with travelling shimmer
+- [ ] Content rows stagger in on expansion
+- [ ] Phase name text has gold shimmer in dark mode on active card
+- [ ] Copy-link button copies URL, changes label to "Copied!" for 3 seconds
+- [ ] Dark mode renders correctly on all elements
+- [ ] Light mode renders correctly on all elements
+- [ ] Mobile 375px: all enhancements render without overflow
+- [ ] prefers-reduced-motion disables continuous animations, retains depth
+- [ ] No em dashes anywhere
+- [ ] All prose matches previous build verbatim
+- [ ] Nav and footer match other pages exactly
+- [ ] Theme toggle works
+
+---
+
 ## Revised Build (BUILD_PROMPT_P2P_REVISED.md) -- Complete page replacement
 
 ### What changed from the Prompt 2 build
