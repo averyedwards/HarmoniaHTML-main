@@ -2,6 +2,15 @@
 
 ---
 
+## Text Patch -- Second expansion methodology rewrites
+
+- Card 1 (Calibration): Replaced 4 method paragraphs with 3. Added concrete user experience walkthrough (rating scale, photo upload, scenario questions with examples). Added personalised-model-vs-one-model differentiator. Added seven dimension names (patience/wrath, generosity/calculation, restraint/impulse, humility/pride). Eliminated redundancy with first expansion.
+- Card 2 (Resonance): Replaced 6 method paragraphs + declaration with 4 + declaration. Added forced-choice research rationale. Integrated core research finding (self-reported traits cannot predict attraction). Added Venn diagram experience with concrete personality examples. Added rejection-anxiety-removed positioning. Expanded insights report specifics. Removed questionnaire re-description (belongs in Phase 1). Declaration preserved.
+- Card 3 (Chemistry): Rewrote 3 method paragraphs. Added concrete user experience (extract HLA, compare against pool). Added research findings (scent attractiveness, partnership satisfaction). Added biological-signal-below-awareness positioning. Added report tension (confirms vs reveals new dimension). Removed marketing superlative.
+- Register shifted to oratorical cascading: semicolons chain parallel arguments; colons introduce revelations; commas create subordinated layers. No em dashes.
+
+---
+
 ## Refinement Patch (REFINEMENT_PATCH_P2P.md) -- Typography and interior rhythm
 
 ### What changed
