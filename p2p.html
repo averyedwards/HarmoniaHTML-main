@@ -1406,6 +1406,16 @@
                 });
             }
 
+            /* --- Reverse SVG stroke-draw animation (collapse cue) --- */
+            function reverseIconAnimation(card) {
+                var draws = card.querySelectorAll('.icon-draw');
+                draws.forEach(function (el) {
+                    var dash = el.dataset.dash || el.getAttribute('stroke-dasharray') || '300';
+                    el.style.transition       = 'stroke-dashoffset 0.4s cubic-bezier(0.4,0,1,1)';
+                    el.style.strokeDashoffset = dash;
+                });
+            }
+
             /* --- Update tab active state --- */
             function updateTabActive(phase) {
                 tabs.forEach(function (tab, i) {
@@ -1517,11 +1527,20 @@
                 }
             }
 
-            /* --- Card click: expand from collapsed --- */
+            /* --- Card click: expand from collapsed / collapse via header --- */
             cards.forEach(function (card) {
                 card.addEventListener('click', function (e) {
-                    if (card.dataset.state !== 'collapsed') return;
                     if (e.target.closest('.more-info-btn') || e.target.closest('.copy-link-btn')) return;
+
+                    /* Header click on an expanded card: collapse it */
+                    if (card.dataset.state !== 'collapsed' && e.target.closest('.card-header')) {
+                        reverseIconAnimation(card);
+                        collapseCard(card);
+                        updateTabActive(-1);
+                        return;
+                    }
+
+                    if (card.dataset.state !== 'collapsed') return;
                     expandToFirst(card);
                 });
             });
