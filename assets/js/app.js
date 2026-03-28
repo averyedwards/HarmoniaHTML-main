@@ -64,16 +64,22 @@
             }
 
             function triggerCardAnimations(i) {
-                if (window.triggerVisualCardAnimation) {
-                    window.triggerVisualCardAnimation(i === 0);
+                // Only call the active card with true. Never call other cards with false.
+                // The false/reset path was wiping completed animations and, because
+                // hasAnimatedOnce stays true after reset, those cards could never
+                // replay — leaving them blank until showAllCardsCompleted() ran.
+                // Each animation function has its own once-only guard so they fire
+                // exactly once and stay in their completed state on return visits.
+                if (i === 0 && window.triggerVisualCardAnimation) {
+                    window.triggerVisualCardAnimation(true);
                 }
-                if (window.triggerPersonalityCardAnimation) {
-                    window.triggerPersonalityCardAnimation(i === 1);
+                if (i === 1 && window.triggerPersonalityCardAnimation) {
+                    window.triggerPersonalityCardAnimation(true);
                 }
-                if (window.triggerGeneticCardAnimation) {
-                    window.triggerGeneticCardAnimation(i === 2);
+                if (i === 2 && window.triggerGeneticCardAnimation) {
+                    window.triggerGeneticCardAnimation(true);
                 }
-                if (window.triggerSynthesisCardAnimation && i === 3) {
+                if (i === 3 && window.triggerSynthesisCardAnimation) {
                     window.triggerSynthesisCardAnimation(true);
                 }
             }
