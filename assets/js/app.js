@@ -82,8 +82,10 @@
                 i = Math.max(0, Math.min(i, cards.length - 1));
                 cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                 updateDots(i);
-                // Animations are triggered by the debounced scroll listener only,
-                // so they fire once the card has fully settled — not mid-scroll
+                // Fallback: trigger animation directly after scroll settles.
+                // scrollIntoView does not reliably fire scroll events on the container
+                // in all browsers, so this guarantees the animation fires.
+                setTimeout(() => triggerCardAnimations(i), 500);
             }
 
             // Auto-rotate every 20 seconds
@@ -136,9 +138,21 @@
                 }, 50);
             });
             
+            // Trigger card 0 animation when slider first enters the viewport.
+            // The scroll listener only fires on internal slider scroll, so card 0
+            // (the default visible card) would never get its animation triggered
+            // without this observer.
+            const sliderObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    triggerCardAnimations(currentIndex);
+                    sliderObserver.disconnect();
+                }
+            }, { threshold: 0.2 });
+            sliderObserver.observe(slider);
+
             // Start auto-rotate
             startAutoRotate();
-            
+
             // Pause on hover, resume on leave
             slider.addEventListener('mouseenter', stopAutoRotate);
             slider.addEventListener('mouseleave', startAutoRotate);
