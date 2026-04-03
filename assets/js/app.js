@@ -656,26 +656,42 @@
             if (btnText) btnText.textContent = 'Processing...';
             if (arrow) arrow.style.display = 'none';
 
-            setTimeout(() => {
+            const payload = {
+                company: document.getElementById('partnershipCompany').value,
+                email: document.getElementById('partnershipEmail').value,
+                mau: document.getElementById('partnershipMau').value,
+                interest: document.getElementById('partnershipInterest').value,
+                inquiry: document.getElementById('partnershipInquiry').value
+            };
+
+            fetch('https://harmoniaengine.com/api/mail/ignite/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(res => {
+                if (!res.ok) throw new Error('Server error');
                 document.getElementById('partnershipsIntegrationForm').reset();
                 document.getElementById('partnershipInterest').value = 'default';
                 document.getElementById('partnershipInterest').classList.remove('tier-selected');
-                
                 if (message) {
                     message.innerHTML = '<span style="color:var(--gold)">Request received. We will be in touch shortly.</span>';
                     message.style.display = 'block';
                 }
-
+                updatePartnershipsContent('default');
+                setTimeout(() => { if (message) message.style.display = 'none'; }, 4000);
+            })
+            .catch(() => {
+                if (message) {
+                    message.innerHTML = '<span style="color:#e05c5c">Something went wrong. Please try again or email us directly.</span>';
+                    message.style.display = 'block';
+                }
+            })
+            .finally(() => {
                 if (btn) btn.classList.remove('processing');
                 if (btnText) btnText.textContent = 'Request Access';
                 if (arrow) arrow.style.display = '';
-
-                updatePartnershipsContent('default');
-
-                setTimeout(() => {
-                    if (message) message.style.display = 'none';
-                }, 4000);
-            }, 1500);
+            });
         }
 
         document.addEventListener('DOMContentLoaded', () => {
